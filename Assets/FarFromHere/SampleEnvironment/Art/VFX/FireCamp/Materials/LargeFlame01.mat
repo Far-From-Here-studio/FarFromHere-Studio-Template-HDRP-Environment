@@ -38,15 +38,14 @@ Material:
   - _DISABLE_SSR_TRANSPARENT
   - _DOUBLESIDED_ON
   - _EMISSION
-  - _ENABLE_FOG_ON_TRANSPARENT
   - _MATERIAL_FEATURE_TRANSMISSION
   - _SURFACE_TYPE_TRANSPARENT
   - _TRANSPARENT_WRITES_MOTION_VEC
   m_InvalidKeywords: []
-  m_LightmapFlags: 1
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 3400
+  m_CustomRenderQueue: 3000
   stringTagMap:
     MotionVector: User
     RenderType: Transparent
@@ -119,7 +118,7 @@ Material:
     m_Floats:
     - AlphaClipping: 0.1
     - CAMERAFADE: 0
-    - EmissiveForce: 400
+    - EmissiveForce: 500
     - FLIPBOOK: 1
     - NormalMap_Strenght: 0
     - SOFTPATICLE: 1
@@ -127,7 +126,7 @@ Material:
     - _AddPrecomputedVelocity: 1
     - _AlphaCutoffEnable: 1
     - _AlphaDstBlend: 1
-    - _AlphaSrcBlend: 0
+    - _AlphaSrcBlend: 1
     - _AlphaToMask: 0
     - _AlphaToMaskInspectorValue: 0
     - _BlendMode: 1
@@ -157,7 +156,7 @@ Material:
     - _EMISSION: 1
     - _EmissionEnabled: 1
     - _EnableBlendModePreserveSpecularLighting: 0
-    - _EnableFogOnTransparent: 1
+    - _EnableFogOnTransparent: 0
     - _ExcludeFromTUAndAA: 0
     - _FlipbookMode: 1
     - _Float: 0
@@ -177,7 +176,7 @@ Material:
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0
     - _RefractionModel: 0
-    - _RenderQueueType: 5
+    - _RenderQueueType: 4
     - _RequireSplitLighting: 0
     - _SmoothnessTextureChannel: 0
     - _SoftParticlesEnabled: 1

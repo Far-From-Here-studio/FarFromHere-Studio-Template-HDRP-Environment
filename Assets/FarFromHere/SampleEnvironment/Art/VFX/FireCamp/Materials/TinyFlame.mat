@@ -49,17 +49,17 @@ Material:
   - VERTEXCOLOR
   - _ADD_PRECOMPUTED_VELOCITY
   - _ALPHATEST_ON
+  - _DISABLE_DECALS
   - _DISABLE_SSR_TRANSPARENT
   - _EMISSION
-  - _ENABLE_FOG_ON_TRANSPARENT
   - _MATERIAL_FEATURE_TRANSMISSION
   - _SURFACE_TYPE_TRANSPARENT
   - _TRANSPARENT_WRITES_MOTION_VEC
   m_InvalidKeywords: []
-  m_LightmapFlags: 1
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: 3400
   stringTagMap:
     MotionVector: User
     RenderType: Transparent
@@ -134,9 +134,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - AlphaClipping: 0.03
+    - AlphaClipping: 0.05
     - CAMERAFADE: 0
-    - EmissiveForce: 1820.1
+    - EmissiveForce: 500
     - FLIPBOOK: 1
     - NormalMap_Strenght: 0
     - SOFTPATICLE: 1
@@ -145,7 +145,7 @@ Material:
     - _AddPrecomputedVelocity: 1
     - _AlphaCutoffEnable: 1
     - _AlphaDstBlend: 1
-    - _AlphaSrcBlend: 1
+    - _AlphaSrcBlend: 0
     - _AlphaToMask: 0
     - _AlphaToMaskInspectorValue: 0
     - _BlendMode: 1
@@ -175,7 +175,7 @@ Material:
     - _EMISSION: 1
     - _EmissionEnabled: 1
     - _EnableBlendModePreserveSpecularLighting: 0
-    - _EnableFogOnTransparent: 1
+    - _EnableFogOnTransparent: 0
     - _ExcludeFromTUAndAA: 0
     - _FlipbookMode: 1
     - _Float: 0
@@ -213,7 +213,7 @@ Material:
     - _StencilWriteMaskDistortionVec: 4
     - _StencilWriteMaskGBuffer: 15
     - _StencilWriteMaskMV: 41
-    - _SupportDecals: 1
+    - _SupportDecals: 0
     - _SurfaceType: 1
     - _TransmissionEnable: 1
     - _TransparentBackfaceEnable: 0
@@ -230,8 +230,8 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
-    - CameraFade: {r: 7, g: 12, b: 1, a: 5}
-    - FadeRange: {r: 0.02, g: 1.05, b: 0, a: 0}
+    - CameraFade: {r: 0, g: 1, b: 1, a: 5}
+    - FadeRange: {r: 0.02, g: 0.5, b: 0, a: 0}
     - Vector2_4F8D01F9: {r: 0, g: 1, b: 0, a: 0}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
     - _Color: {r: 0.7490196, g: 0.7490196, b: 0.7490196, a: 1}
