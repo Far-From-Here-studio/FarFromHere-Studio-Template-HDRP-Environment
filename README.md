@@ -1,7 +1,7 @@
 # Far From Here Studio Template: HDRP Environment
-Compatible Unity Version : Unity 2023.2 +
+Compatible *Unity Version* : **Unity 2023.2 +**
 
-Repository use Git LFS
+*Repository use Git LFS*
 
 ![PromotionalScreenShot](https://static.wixstatic.com/media/40e3ee_fea04cf6bb104270aaa546a0ddc71f4d~mv2.png/v1/fill/w_980,h_653,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/CoverImageHDRPEnvironment.png)
 
@@ -10,12 +10,12 @@ This Project is a nice starting point for worlbuilding a Scene using Unity HDRP,
 You can use this resource to get fast and build your Next-Gen prototype.
 You can use this Unity HDRP project and resources freely for your game but commercial redistribution for any other purpose is not allowed (cf ThirdPartyNotice.txt)
 
-This project is the Far From Here Studio's official demo project, it is usefull for us to maintain this project to craft new tooling, showcase and tutorials for Unity HDRP using this content.
+This project is the Far From Here Studio's official demo project, it is usefull for us to maintain this project to build new tools, showcases and tutorials for Unity HDRP.
 
 ## Important Disclaimer (ThirdParty)
 Third-Party Content see ThirdPartyNotice.txt after installation
 
-In order to fully run the template project's Demo Scene, you will need to install (Free) Resources from Unity Technologies from the Asset Store :
+In order to fully run the template project's Demo Scene, you will need to install (Free) Resources from *Unity Technologies* from the **Asset Store** :
 
 https://assetstore.unity.com/packages/3d/environments/landscapes/terrain-sample-asset-pack-145808
 
