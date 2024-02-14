@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8769625654731223966}
   - component: {fileID: 9054183586580009001}
   m_Layer: 0
-  m_Name: MS_Viking_Shield_MT_Wood_0
+  m_Name: Shield_Wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3480053125250096516}
-  m_Mesh: {fileID: 4300000, guid: 076ba93229b65154fb64aa9f888dd7e4, type: 2}
+  m_Mesh: {fileID: -1736622283181914040, guid: 6f5716afd1a9b3242a3bc5738c14e092, type: 3}
 --- !u!23 &9054183586580009001
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -90,6 +90,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -127,7 +129,7 @@ GameObject:
   - component: {fileID: 3855480853112114866}
   - component: {fileID: 639050950177149303}
   m_Layer: 0
-  m_Name: MS_Viking_Shield_MT_Metal_0
+  m_Name: Shield_Metal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155,7 +157,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4230357923369797196}
-  m_Mesh: {fileID: 4300000, guid: b7f69dec7bdf2ac48ad6327e7767e460, type: 2}
+  m_Mesh: {fileID: 4496885475859389300, guid: 6f5716afd1a9b3242a3bc5738c14e092, type: 3}
 --- !u!23 &639050950177149303
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -173,6 +175,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -208,7 +212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6962190972184335470}
   m_Layer: 0
-  m_Name: MS_Viking_Shield
+  m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
