@@ -52,7 +52,7 @@ MonoBehaviour:
     supportTransparentDepthPostpass: 0
     colorBufferFormat: 74
     supportCustomPass: 1
-    customBufferFormat: 74
+    customBufferFormat: 8
     supportedLitShaderMode: 2
     planarReflectionResolution:
       m_Values: 000100000002000000040000

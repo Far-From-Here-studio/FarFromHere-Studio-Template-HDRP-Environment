@@ -212,7 +212,7 @@ Material:
     - _EnergyConservingSpecularColor: 1
     - _FlipHorizontal: 0
     - _FlipVertical: 0
-    - _HeightAmplitude: 0.1189
+    - _HeightAmplitude: 0.037
     - _HeightCenter: 0.15
     - _HeightIntensity: 7.19
     - _HeightMapParametrization: 1
@@ -220,7 +220,7 @@ Material:
     - _HeightMin: 0
     - _HeightOffset: 0
     - _HeightPoMAmplitude: 2.81
-    - _HeightTessAmplitude: 11.89
+    - _HeightTessAmplitude: 3.7
     - _HeightTessCenter: 0.15
     - _InvTilingScale: 2.9411764
     - _Ior: 1.5

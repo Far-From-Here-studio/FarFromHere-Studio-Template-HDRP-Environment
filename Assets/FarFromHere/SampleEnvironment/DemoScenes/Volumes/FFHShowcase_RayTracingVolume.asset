@@ -456,7 +456,7 @@ MonoBehaviour:
   active: 1
   indirectDiffuseLightingMultiplier:
     m_OverrideState: 1
-    m_Value: 0.35
+    m_Value: 0.11
   indirectDiffuseLightingLayers:
     m_OverrideState: 0
     m_Value: 255
