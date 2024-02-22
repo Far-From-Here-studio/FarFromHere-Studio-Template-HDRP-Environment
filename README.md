@@ -23,6 +23,10 @@ https://assetstore.unity.com/packages/3d/environments/landscapes/terrain-sample-
 https://assetstore.unity.com/packages/3d/environments/unity-terrain-hdrp-demo-scene-213198
 
 
+Unity Forum Tread : 
+https://forum.unity.com/threads/farfromherestudio-template-hdrp-environment.1549775/
+
+
 ## Installation Guide
 - Clone the Far From Here Studio Template: HDRP Environment
 - Open Unity project
@@ -55,9 +59,6 @@ https://assetstore.unity.com/packages/3d/environments/unity-terrain-hdrp-demo-sc
 - Custom Generated Texture (from Muse)
 - Terrain Layers and Rocks Textures adapted from Terrain HDRP Demo Scene to use Generated texture
 - Handmade Probuilder Meshes
-
-Unity Forum Tread : 
-https://forum.unity.com/threads/farfromherestudio-template-hdrp-environment.1549775/
 - Smoke VFXGraph VolumetricOutput
 - FireCamp VFX
 - Showcase 3Dmodel : Giant Snake Skeleton
