@@ -12,6 +12,11 @@ You can use this Unity HDRP project and resources freely for your game but comme
 
 This project is the Far From Here Studio's official demo project, it is usefull for us to maintain this project to build new tools, showcases and tutorials for Unity HDRP.
 
+
+Unity Forum Tread : 
+https://forum.unity.com/threads/farfromherestudio-template-hdrp-environment.1549775/
+
+
 ## Important Disclaimer (ThirdParty)
 Third-Party Content see ThirdPartyNotice.txt after installation
 
@@ -21,10 +26,6 @@ https://assetstore.unity.com/packages/3d/environments/landscapes/terrain-sample-
 
 
 https://assetstore.unity.com/packages/3d/environments/unity-terrain-hdrp-demo-scene-213198
-
-
-Unity Forum Tread : 
-https://forum.unity.com/threads/farfromherestudio-template-hdrp-environment.1549775/
 
 
 ## Installation Guide
