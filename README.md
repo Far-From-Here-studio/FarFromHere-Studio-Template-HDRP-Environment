@@ -13,6 +13,10 @@ You can use this Unity HDRP project and resources freely for your game but comme
 This project is the Far From Here Studio's official demo project, it is usefull for us to maintain this project to build new tools, showcases and tutorials for Unity HDRP.
 
 
+Changelogs: 
+https://docs.google.com/document/d/1D3GfPXt4xNl0uEiJ2KbdwPJG32d7b5WaZLC7PB66lQM/edit?usp=sharing
+
+
 Unity Forum Tread : 
 https://forum.unity.com/threads/farfromherestudio-template-hdrp-environment.1549775/
 
