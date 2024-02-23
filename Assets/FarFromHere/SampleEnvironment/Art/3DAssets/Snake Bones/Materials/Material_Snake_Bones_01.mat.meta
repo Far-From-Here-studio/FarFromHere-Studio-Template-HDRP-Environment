@@ -1,8 +1,15 @@
 fileFormatVersion: 2
 guid: 65743653ced235348b025c2761b714c6
+AssetOrigin:
+  serializedVersion: 1
+  productId: 165032
+  packageName: Castle Valley Collection 1
+  packageVersion: 1.5
+  assetPath: Assets/Castle Valley Collection 1/Extras/Snake Bones/Materials/Material_Snake_Bones_01.mat
+  uploadId: 471550
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 0
-  userData: '{"GUIDArray":["d2e8832ed3f68ba41996e94ac4a38b13","0516dec6dbc964748afd965185528096"],"withUV":[false,false,false,false]}'
+  userData: '{"GUIDArray":["d2e8832ed3f68ba41996e94ac4a38b13","0516dec6dbc964748afd965185528096","8657dabf395e6af48bea805a41bfb06d",""],"withUV":[false,false,false,false]}'
   assetBundleName: 
   assetBundleVariant: 

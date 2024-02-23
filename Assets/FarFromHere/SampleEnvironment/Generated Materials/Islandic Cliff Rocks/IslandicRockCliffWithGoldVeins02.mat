@@ -127,10 +127,10 @@ Material:
     - _ExcludeFromTUAndAA: 0
     - _FlipHorizontal: 0
     - _FlipVertical: 0
-    - _HeightIntensity: 4.29
+    - _HeightIntensity: 5.56
     - _MaterialID: 1
     - _MaterialTypeMask: 2
-    - _MetallicIntensity: 1.37
+    - _MetallicIntensity: -1.33
     - _OpaqueCullMode: 2
     - _PerPixelSorting: 0
     - _RayTracing: 0
@@ -185,6 +185,6 @@ Material:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
-    - _Tiling: {r: 2, g: 2, b: 0, a: 0}
+    - _Tiling: {r: 5, g: 5, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Ocean
+  m_Shader: {fileID: -6465566751694194690, guid: 126e36bfbb28c1b489687cf8b72108c4,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    MotionVector: User
+  disabledShaderPasses:
+  - MOTIONVECTORS
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _CustomRT_Droplets:
+        m_Texture: {fileID: 8600000, guid: 9c1cca59737f4534ea675a56e4b3fcbe, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HeightMap:
+        m_Texture: {fileID: 2800000, guid: 5326593a6e70d9a4fa74c7c8bbb86a10, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _IceColorMap:
+        m_Texture: {fileID: 2800000, guid: 3f37c62f21250fb4994a639b9d37f92b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _IceHeightMap:
+        m_Texture: {fileID: 2800000, guid: 5326593a6e70d9a4fa74c7c8bbb86a10, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _IceNormalMap:
+        m_Texture: {fileID: 2800000, guid: 91ce43e21ef2992439a3926f32cd3193, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SnowColor:
+        m_Texture: {fileID: 2800000, guid: 3f37c62f21250fb4994a639b9d37f92b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SnowNormal:
+        m_Texture: {fileID: 2800000, guid: 91ce43e21ef2992439a3926f32cd3193, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WaterOverlay_ca87e42f7bdc44fd9dcd55cbd4f9d81e_IceHeightMap_4020337923_Texture2D:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WaterOverlay_ca87e42f7bdc44fd9dcd55cbd4f9d81e_SnowHeight_4020337923_Texture2D:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _CurrentOrientation: 90
+    - _CurrentSpeed: 0.05
+    - _FadeEnd: 25
+    - _FadeStart: 10
+    - _IceHeight: 0.41
+    - _IceNormalForce: 0.37
+    - _IceSmoothness: 0.43
+    - _MaxMipBias: 5
+    - _Normal: 0.26
+    - _NormalIntensity: 30.01
+    - _OverlayTiling: 0.05
+    - _RefractedY: -0.03
+    - _RemoveIce: 1
+    - _SnowHeight: 0.33
+    - _SnowTiling: 0.04
+    - _Tiling: 0.3
+    m_Colors:
+    - _Color: {r: 1.9622642, g: 1.9622642, b: 1.9622642, a: 0}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _GroundEmission: {r: 0.044944815, g: 0.08199091, b: 0.09433961, a: 1}
+    - _IceBaseColor: {r: 0.34709862, g: 0.3713065, b: 0.3773585, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
+--- !u!114 &1757145773110640078
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da692e001514ec24dbc4cca1949ff7e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 13
+  hdPluginSubTargetMaterialVersions:
+    m_Keys: []
+    m_Values: 

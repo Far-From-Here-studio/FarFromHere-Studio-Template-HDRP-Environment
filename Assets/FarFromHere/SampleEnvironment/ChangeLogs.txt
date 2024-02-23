@@ -1,0 +1,28 @@
+﻿##FarFromHere-Studio-Template-HDRP-Environment
+
+
+##ChangeLogs
+
+## v 0.1
+Base demo content
+
+
+## v 0.2
+We did forget few things for the Base Demo Content Release, mainly because I messed some resources with a work-in-progress extension, my bad, so here is a quick patch.
+
+	new :
+	* Baked Scene baked using Adaptative Probe Volume
+	* TerrainDetails shader Color Control
+
+
+	added : 
+	* WindZone for trees
+
+
+	fix :
+	* missing Rocks “Goldveins” Materials (cave area)
+	* Missing River Material
+	* Some Rocks Overgrowth Prefab LOD_0 layer was “HiddenRuntime” changed to “Default”, causing the LOD_0 to be culled from the main camera
+	* FireCampVFX particles layermask changed to “TransparentVFX”
+	* Remove missing scripts
+	* Remove the “Terrain” LayerMask, changed “Terrains” to “Default”

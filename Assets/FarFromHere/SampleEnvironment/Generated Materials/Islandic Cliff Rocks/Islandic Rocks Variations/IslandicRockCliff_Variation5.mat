@@ -181,8 +181,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AORemapMax: 0.6171796
-    - _AORemapMin: 0.47961617
+    - _AORemapMax: 0.34540415
+    - _AORemapMin: 0
     - _ATDistance: 1
     - _AddPrecomputedVelocity: 0
     - _AlbedoAffectEmissive: 0
@@ -228,16 +228,16 @@ Material:
     - _EnergyConservingSpecularColor: 1
     - _FlipHorizontal: 0
     - _FlipVertical: 0
-    - _HeightAmplitude: 0.1246
-    - _HeightCenter: 0.8898716
+    - _HeightAmplitude: 0.1726
+    - _HeightCenter: 0.35725608
     - _HeightIntensity: 7.19
     - _HeightMapParametrization: 1
     - _HeightMax: 5.94
     - _HeightMin: -1.45
-    - _HeightOffset: 0.5
+    - _HeightOffset: -2.3
     - _HeightPoMAmplitude: 2
-    - _HeightTessAmplitude: 12.46
-    - _HeightTessCenter: 0.93
+    - _HeightTessAmplitude: 17.26
+    - _HeightTessCenter: 0.224
     - _InvTilingScale: 2.857143
     - _Ior: 1.5
     - _IridescenceMask: 1

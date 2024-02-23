@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 2cdd0b0971a65dc4d88abf326763cfea
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 13400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 165032
+  packageName: Castle Valley Collection 1
+  packageVersion: 1.5
+  assetPath: Assets/Castle Valley Collection 1/Extras/Snake Bones/Mesh/Colliders/Bone
+    Physics Material.physicMaterial
+  uploadId: 471550

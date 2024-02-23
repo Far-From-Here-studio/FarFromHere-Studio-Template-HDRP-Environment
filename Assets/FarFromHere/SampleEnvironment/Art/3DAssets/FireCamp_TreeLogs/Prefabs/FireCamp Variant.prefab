@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 148810612995649101}
   - component: {fileID: 62588563272256367}
   - component: {fileID: 61502973252504865}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: TinyFlames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.5471698, g: 0.22377181, b: 0.08517267, a: 1}
+      maxColor: {r: 0.084905684, g: 0.084905684, b: 0.084905684, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4940,7 +4940,7 @@ GameObject:
   - component: {fileID: 1712015011368304200}
   - component: {fileID: 1079262837964704051}
   - component: {fileID: 4146070090267015552}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Flamme
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5152,7 +5152,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 1}
+      maxColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -10113,7 +10113,7 @@ GameObject:
   - component: {fileID: 3887053911923558305}
   - component: {fileID: 3068527790348991034}
   - component: {fileID: 5104026679518818381}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Flamme
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10325,7 +10325,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -15004,7 +15004,7 @@ GameObject:
   - component: {fileID: 4629890137521747886}
   - component: {fileID: 4796661933642858872}
   - component: {fileID: 4797529569608741796}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: FireEmbers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19758,7 +19758,7 @@ GameObject:
   - component: {fileID: 4638665704123201548}
   - component: {fileID: 4796808393347493392}
   - component: {fileID: 4797985244565088202}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: FireCamp VFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24685,7 +24685,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 0.5, y: 0.5}
   m_BounceIntensity: 1
@@ -24848,7 +24848,7 @@ GameObject:
   - component: {fileID: 61129949604150180}
   - component: {fileID: 3426408256754664108}
   - component: {fileID: 2209489361964822900}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Flamme
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25060,7 +25060,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 1}
+      maxColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -29716,7 +29716,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.006672202, y: -0.006013407, z: 0.0117892055, w: 0.9998902}
   m_LocalPosition: {x: -0.598, y: -0.581, z: 0.108}
-  m_LocalScale: {x: 1.2828, y: 1.2828, z: 1.2828}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4363587899561665434}
@@ -29731,7 +29731,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5240022550408722100}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: FireCamp VFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
