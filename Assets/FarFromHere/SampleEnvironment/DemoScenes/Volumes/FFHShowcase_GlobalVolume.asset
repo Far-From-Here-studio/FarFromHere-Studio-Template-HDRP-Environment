@@ -351,7 +351,7 @@ MonoBehaviour:
     m_Value: 0
   nearFocusEnd:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.00001
   farFocusStart:
     m_OverrideState: 1
     m_Value: 150
@@ -360,22 +360,22 @@ MonoBehaviour:
     m_Value: 250
   m_NearSampleCount:
     m_OverrideState: 1
-    m_Value: 4
+    m_Value: 3
   m_NearMaxBlur:
     m_OverrideState: 1
-    m_Value: 0.74
+    m_Value: 0
   m_FarSampleCount:
     m_OverrideState: 1
-    m_Value: 8
+    m_Value: 6
   m_FarMaxBlur:
     m_OverrideState: 1
-    m_Value: 3
+    m_Value: 2
   m_Resolution:
     m_OverrideState: 1
     m_Value: 1
   m_HighQualityFiltering:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   m_PhysicallyBased:
     m_OverrideState: 1
     m_Value: 0
@@ -438,10 +438,10 @@ MonoBehaviour:
     m_Value: 1
   limitMin:
     m_OverrideState: 1
-    m_Value: 2.28823
+    m_Value: 2.2602737
   limitMax:
     m_OverrideState: 1
-    m_Value: 7.7749763
+    m_Value: 7.5616436
   curveMap:
     m_OverrideState: 1
     m_Value:

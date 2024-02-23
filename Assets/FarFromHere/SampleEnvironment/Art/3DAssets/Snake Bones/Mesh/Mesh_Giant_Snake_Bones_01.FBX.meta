@@ -1,11 +1,106 @@
 fileFormatVersion: 2
 guid: 0c016a718524a0e4db693a2d23dd674c
 ModelImporter:
-  serializedVersion: 22200
-  internalIDToNameTable: []
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: MESH_A_LOD0
+    100002: MESH_A_LOD1
+    100004: MESH_A_LOD2
+    100006: MESH_B_LOD0
+    100008: MESH_B_LOD1
+    100010: MESH_B_LOD2
+    100012: MESH_C_LOD0
+    100014: MESH_C_LOD1
+    100016: MESH_C_LOD2
+    100018: MESH_D_LOD0
+    100020: MESH_D_LOD1
+    100022: MESH_D_LOD2
+    100024: MESH_E_LOD0
+    100026: MESH_E_LOD1
+    100028: MESH_E_LOD2
+    100030: MESH_F_LOD0
+    100032: MESH_F_LOD1
+    100034: MESH_F_LOD2
+    100036: //RootNode
+    400000: MESH_A_LOD0
+    400002: MESH_A_LOD1
+    400004: MESH_A_LOD2
+    400006: MESH_B_LOD0
+    400008: MESH_B_LOD1
+    400010: MESH_B_LOD2
+    400012: MESH_C_LOD0
+    400014: MESH_C_LOD1
+    400016: MESH_C_LOD2
+    400018: MESH_D_LOD0
+    400020: MESH_D_LOD1
+    400022: MESH_D_LOD2
+    400024: MESH_E_LOD0
+    400026: MESH_E_LOD1
+    400028: MESH_E_LOD2
+    400030: MESH_F_LOD0
+    400032: MESH_F_LOD1
+    400034: MESH_F_LOD2
+    400036: //RootNode
+    2100000: 03 - Default
+    2300000: MESH_A_LOD0
+    2300002: MESH_A_LOD1
+    2300004: MESH_A_LOD2
+    2300006: MESH_B_LOD0
+    2300008: MESH_B_LOD1
+    2300010: MESH_B_LOD2
+    2300012: MESH_C_LOD0
+    2300014: MESH_C_LOD1
+    2300016: MESH_C_LOD2
+    2300018: MESH_D_LOD0
+    2300020: MESH_D_LOD1
+    2300022: MESH_D_LOD2
+    2300024: MESH_E_LOD0
+    2300026: MESH_E_LOD1
+    2300028: MESH_E_LOD2
+    2300030: MESH_F_LOD0
+    2300032: MESH_F_LOD1
+    2300034: MESH_F_LOD2
+    3300000: MESH_A_LOD0
+    3300002: MESH_A_LOD1
+    3300004: MESH_A_LOD2
+    3300006: MESH_B_LOD0
+    3300008: MESH_B_LOD1
+    3300010: MESH_B_LOD2
+    3300012: MESH_C_LOD0
+    3300014: MESH_C_LOD1
+    3300016: MESH_C_LOD2
+    3300018: MESH_D_LOD0
+    3300020: MESH_D_LOD1
+    3300022: MESH_D_LOD2
+    3300024: MESH_E_LOD0
+    3300026: MESH_E_LOD1
+    3300028: MESH_E_LOD2
+    3300030: MESH_F_LOD0
+    3300032: MESH_F_LOD1
+    3300034: MESH_F_LOD2
+    4300000: MESH_A_LOD0
+    4300002: MESH_A_LOD1
+    4300004: MESH_A_LOD2
+    4300006: MESH_B_LOD0
+    4300008: MESH_B_LOD1
+    4300010: MESH_B_LOD2
+    4300012: MESH_C_LOD0
+    4300014: MESH_C_LOD1
+    4300016: MESH_C_LOD2
+    4300018: MESH_D_LOD0
+    4300020: MESH_D_LOD1
+    4300022: MESH_D_LOD2
+    4300024: MESH_E_LOD0
+    4300026: MESH_E_LOD1
+    4300028: MESH_E_LOD2
+    4300030: MESH_F_LOD0
+    4300032: MESH_F_LOD1
+    4300034: MESH_F_LOD2
+    9500000: //RootNode
+    20500000: //RootNode
   externalObjects: {}
   materials:
-    materialImportMode: 2
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -14,8 +109,9 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-    removeConstantScaleCurves: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -37,39 +133,28 @@ ModelImporter:
     - 0.125
     - 0.01
     globalScale: 1
-    meshCompression: 2
+    meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
-    sortHierarchyByName: 1
-    importPhysicalCameras: 1
-    importVisibility: 0
-    importBlendShapes: 0
-    importCameras: 0
-    importLights: 0
-    nodeNameCollisionStrategy: 1
-    fileIdsGeneration: 2
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
+    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
-    bakeAxisConversion: 0
     preserveHierarchy: 0
-    skinWeightsMode: 0
-    maxBonesPerVertex: 4
-    minBoneWeight: 0.001
-    optimizeBones: 1
-    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
-    secondaryUVMarginMethod: 1
-    secondaryUVMinLightmapResolution: 40
-    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
-    strictVertexDataChecks: 0
+    previousCalculatedGlobalScale: 0.0254
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -78,10 +163,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips: []
   importAnimation: 0
+  copyAvatar: 0
   humanDescription:
-    serializedVersion: 3
+    serializedVersion: 2
     human: []
     skeleton: []
     armTwist: 0.5
@@ -91,20 +176,21 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 0
   humanoidOversampling: 1
-  avatarSetup: 0
-  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
-  importBlendShapeDeformPercent: 1
-  remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 165032
+  packageName: Castle Valley Collection 1
+  packageVersion: 1.5
+  assetPath: Assets/Castle Valley Collection 1/Extras/Snake Bones/Mesh/Mesh_Giant_Snake_Bones_01.FBX
+  uploadId: 471550

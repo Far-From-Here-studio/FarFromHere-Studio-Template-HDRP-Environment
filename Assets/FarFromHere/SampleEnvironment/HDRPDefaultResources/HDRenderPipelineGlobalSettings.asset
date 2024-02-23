@@ -171,8 +171,8 @@ MonoBehaviour:
       - 8124e5870f4fd4c779e7a5f994e84ad1
       - 433e904158908bd49bc36855154bd93b
       m_Values:
-      - m_Center: {x: 121.5, y: 0, z: 121.5}
-        m_Extent: {x: 202.5, y: 81, z: 202.5}
+      - m_Center: {x: 108, y: 0, z: 108}
+        m_Extent: {x: 162, y: 54, z: 162}
       - m_Center: {x: 121.5, y: 0, z: 121.5}
         m_Extent: {x: 202.5, y: 81, z: 202.5}
     hasProbeVolumes:

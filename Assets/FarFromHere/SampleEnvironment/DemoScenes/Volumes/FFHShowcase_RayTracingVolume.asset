@@ -185,16 +185,16 @@ MonoBehaviour:
   active: 1
   normalBias:
     m_OverrideState: 1
-    m_Value: 0.37
+    m_Value: 0.57
   viewBias:
     m_OverrideState: 1
-    m_Value: 0.17
+    m_Value: 0.4
   scaleBiasWithMinProbeDistance:
     m_OverrideState: 1
     m_Value: 1
   samplingNoise:
     m_OverrideState: 1
-    m_Value: 0.13
+    m_Value: 0.354
   animateSamplingNoise:
     m_OverrideState: 1
     m_Value: 1
@@ -203,7 +203,7 @@ MonoBehaviour:
     m_Value: 1
   minValidDotProductValue:
     m_OverrideState: 1
-    m_Value: -0.002
+    m_Value: -0.052
   occlusionOnlyReflectionNormalization:
     m_OverrideState: 1
     m_Value: 1
@@ -255,10 +255,10 @@ MonoBehaviour:
     m_Value: 3
   depthBufferThickness:
     m_OverrideState: 1
-    m_Value: 0.026
+    m_Value: 0.033
   fullResolutionSS:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   m_MaxRaySteps:
     m_OverrideState: 1
     m_Value: 32
@@ -351,28 +351,28 @@ MonoBehaviour:
     m_Value: 1
   m_MinSmoothness:
     m_OverrideState: 1
-    m_Value: 0.023
+    m_Value: 0.153
   m_SmoothnessFadeStart:
     m_OverrideState: 1
-    m_Value: 0.17
+    m_Value: 0.555
   reflectSky:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   usedAlgorithm:
     m_OverrideState: 1
     m_Value: 1
   depthBufferThickness:
     m_OverrideState: 1
-    m_Value: 0.001
+    m_Value: 0.06
   screenFadeDistance:
     m_OverrideState: 1
-    m_Value: 0.597
+    m_Value: 0.676
   accumulationFactor:
     m_OverrideState: 1
-    m_Value: 0.602
+    m_Value: 0.862
   biasFactor:
     m_OverrideState: 1
-    m_Value: 0.494
+    m_Value: 0.478
   speedRejectionParam:
     m_OverrideState: 1
     m_Value: 0.108
@@ -381,7 +381,7 @@ MonoBehaviour:
     m_Value: 0.342
   speedSmoothReject:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   speedSurfaceOnly:
     m_OverrideState: 1
     m_Value: 1
@@ -456,13 +456,13 @@ MonoBehaviour:
   active: 1
   indirectDiffuseLightingMultiplier:
     m_OverrideState: 1
-    m_Value: 0.11
+    m_Value: 0.33
   indirectDiffuseLightingLayers:
     m_OverrideState: 0
     m_Value: 255
   reflectionLightingMultiplier:
     m_OverrideState: 1
-    m_Value: 0.75
+    m_Value: 0.5
   reflectionLightingLayers:
     m_OverrideState: 0
     m_Value: 255
