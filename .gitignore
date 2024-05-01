@@ -27,7 +27,7 @@
 /[Pp]ackages/com.unity.asset-store-tools*
 
 #FarFromHere Studio WIP projection buffer
-/[Aa]ssets/FFH MeteoVFX*
+/[Aa]ssets/FarFromHere/MeteoVFX
 #FarFromHere Studio modified content
 /[Aa]ssets/Save*
 
