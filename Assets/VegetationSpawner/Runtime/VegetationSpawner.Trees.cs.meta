@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 726cad149c3b486a884b28ec61ec3c92
+timeCreated: 1614365486
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177192
+  packageName: Vegetation Spawner
+  packageVersion: 1.1.0
+  assetPath: Assets/VegetationSpawner/Runtime/VegetationSpawner.Trees.cs
+  uploadId: 609677

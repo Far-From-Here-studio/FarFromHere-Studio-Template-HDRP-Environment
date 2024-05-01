@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 17c8eb6bd61fd8d48a9ba0303a6a20d4
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177192
+  packageName: Vegetation Spawner
+  packageVersion: 1.1.0
+  assetPath: Assets/VegetationSpawner/_Demo/Terrain/TerrainChunk_0.asset
+  uploadId: 609677

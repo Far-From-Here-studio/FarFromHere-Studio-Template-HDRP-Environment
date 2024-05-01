@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: c29a9c13296bcab41a4438ee4b5d2c9a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177192
+  packageName: Vegetation Spawner
+  packageVersion: 1.1.0
+  assetPath: Assets/VegetationSpawner/Editor/VegetationSpawnerInspector.cs
+  uploadId: 609677

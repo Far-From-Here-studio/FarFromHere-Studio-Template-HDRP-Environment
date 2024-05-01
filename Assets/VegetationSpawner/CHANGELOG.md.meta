@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 35eedf231ecf3bf4da9d31eeb00b421c
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177192
+  packageName: Vegetation Spawner
+  packageVersion: 1.1.0
+  assetPath: Assets/VegetationSpawner/CHANGELOG.md
+  uploadId: 609677

@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 80965793ef514217b8d6fe68b83329bf
+timeCreated: 1614365671
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177192
+  packageName: Vegetation Spawner
+  packageVersion: 1.1.0
+  assetPath: Assets/VegetationSpawner/Runtime/VegetationSpawner.Collision.cs
+  uploadId: 609677

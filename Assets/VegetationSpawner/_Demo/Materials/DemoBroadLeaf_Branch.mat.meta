@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 197b15a43761a4a43b56f9ddf5abb026
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177192
+  packageName: Vegetation Spawner
+  packageVersion: 1.1.0
+  assetPath: Assets/VegetationSpawner/_Demo/Materials/DemoBroadLeaf_Branch.mat
+  uploadId: 609677

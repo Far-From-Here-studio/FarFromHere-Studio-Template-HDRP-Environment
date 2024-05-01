@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: d6ebd7e4a48f5644d80589adb5b94e91
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177192
+  packageName: Vegetation Spawner
+  packageVersion: 1.1.0
+  assetPath: Assets/VegetationSpawner/package.json
+  uploadId: 609677

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e25d15c9ae4458c48a1f64ec01011868
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177192
+  packageName: Vegetation Spawner
+  packageVersion: 1.1.0
+  assetPath: Assets/VegetationSpawner/_Demo/Materials/DemoSpruce_Branch.mat
+  uploadId: 609677

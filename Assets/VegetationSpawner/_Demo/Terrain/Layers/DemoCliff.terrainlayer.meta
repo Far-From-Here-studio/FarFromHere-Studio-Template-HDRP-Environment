@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e0d9469a58c161248b9ac0a71f7750ba
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177192
+  packageName: Vegetation Spawner
+  packageVersion: 1.1.0
+  assetPath: Assets/VegetationSpawner/_Demo/Terrain/Layers/DemoCliff.terrainlayer
+  uploadId: 609677

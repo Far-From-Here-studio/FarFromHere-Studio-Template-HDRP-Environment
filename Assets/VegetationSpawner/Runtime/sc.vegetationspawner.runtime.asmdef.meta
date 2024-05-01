@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: fe939d39c53623d45a1c72d470359c7f
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177192
+  packageName: Vegetation Spawner
+  packageVersion: 1.1.0
+  assetPath: Assets/VegetationSpawner/Runtime/sc.vegetationspawner.runtime.asmdef
+  uploadId: 609677

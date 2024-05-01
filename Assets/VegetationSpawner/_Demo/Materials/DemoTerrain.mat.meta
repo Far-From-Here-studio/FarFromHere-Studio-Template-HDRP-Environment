@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b66ad04a073fa4343afd378a5e36ca4e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177192
+  packageName: Vegetation Spawner
+  packageVersion: 1.1.0
+  assetPath: Assets/VegetationSpawner/_Demo/Materials/DemoTerrain.mat
+  uploadId: 609677

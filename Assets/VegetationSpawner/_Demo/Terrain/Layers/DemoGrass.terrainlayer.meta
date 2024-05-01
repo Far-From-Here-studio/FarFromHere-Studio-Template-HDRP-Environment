@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a81050ac684e8ef438628a0ed178d144
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177192
+  packageName: Vegetation Spawner
+  packageVersion: 1.1.0
+  assetPath: Assets/VegetationSpawner/_Demo/Terrain/Layers/DemoGrass.terrainlayer
+  uploadId: 609677

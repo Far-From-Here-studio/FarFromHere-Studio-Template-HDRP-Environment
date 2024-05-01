@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 82aea1bf4675be54487e9d7583efd53c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177192
+  packageName: Vegetation Spawner
+  packageVersion: 1.1.0
+  assetPath: Assets/VegetationSpawner/_Demo/Terrain/Layers/DemoDirt.terrainlayer
+  uploadId: 609677

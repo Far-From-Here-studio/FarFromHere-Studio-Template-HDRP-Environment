@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: ab89c256954e4cbc90c390356d5c5fec
+timeCreated: 1614365571
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177192
+  packageName: Vegetation Spawner
+  packageVersion: 1.1.0
+  assetPath: Assets/VegetationSpawner/Runtime/VegetationSpawner.Grass.cs
+  uploadId: 609677
