@@ -35,6 +35,7 @@
 /[Aa]ssets/TerrainDemoScene_HDRP*
 /[Aa]ssets/TerrainSampleAssets*
 /[Aa]ssets/TextMesh Pro*
+/[Aa]ssets/VegetationSpawner*
 
 #plastic cache directory
 .plastic/
