@@ -24,7 +24,27 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
-        SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        if (!IsSceneLoaded(sceneName))
+        {
+            SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        }
+        else
+        {
+            Debug.LogWarning("Scene " + sceneName + " is already loaded.");
+        }
+    }
+
+    private bool IsSceneLoaded(string sceneName)
+    {
+        for (int i = 0; i < SceneManager.sceneCount; i++)
+        {
+            Scene scene = SceneManager.GetSceneAt(i);
+            if (scene.name == sceneName)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 #if UNITY_EDITOR
@@ -49,7 +69,7 @@ public class SceneLoader : MonoBehaviour
 
     private void Start()
     {
-       if(LoadAtStart) LoadScene(sceneLists[ListIndex].scenesName[ListIndex]);
+        if (LoadAtStart) LoadScene(sceneLists[ListIndex].scenesName[ListIndex]);
     }
 
     public void UnloadScene(string sceneName)
