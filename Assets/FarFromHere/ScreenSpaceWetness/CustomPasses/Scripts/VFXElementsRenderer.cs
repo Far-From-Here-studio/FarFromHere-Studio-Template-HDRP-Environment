@@ -8,10 +8,14 @@ class VFXElementsRenderer : CustomPass
     public RenderTexture VFXBufferRT;
     public Camera VFXOrthoCamera;
     RTHandle VFXBuffer;
+    private MaterialPropertyBlock props;
 
     protected override void Setup(ScriptableRenderContext renderContext, CommandBuffer cmd)
     {
         if (VFXBufferRT) VFXBuffer = RTHandles.Alloc(VFXBufferRT);
+        props = new MaterialPropertyBlock();
+
+        cmd.SetRenderTarget(VFXBuffer);
     }
     protected override void Execute(CustomPassContext ctx)
     {
@@ -21,22 +25,16 @@ class VFXElementsRenderer : CustomPass
             ctx.cmd.SetRenderTarget(VFXBuffer);
             ctx.cmd.ClearRenderTarget(true, true, Color.black);
 
-            VFXOrthoCamera.TryGetCullingParameters(out var cullingParams);
-            cullingParams.cullingOptions = CullingOptions.None;
-            ctx.cullingResults = ctx.renderContext.Cull(ref cullingParams);
-
-            ShaderTagId[] VFXElementshaderPasses = new ShaderTagId[]
+            if (VFXOrthoCamera.TryGetCullingParameters(out var cullingParams))
             {
-                HDShaderPassNames.s_ForwardName,
-                HDShaderPassNames.s_SRPDefaultUnlitName,
-            };
-
-
+                cullingParams.cullingOptions = CullingOptions.None;
+                ctx.cullingResults = ctx.renderContext.Cull(ref cullingParams);
+            }
             CustomPassUtils.RenderFromCamera(ctx, VFXOrthoCamera, DefaultLayerMask);
         }
     }
     protected override void Cleanup()
     {
-
+        VFXBuffer.Release();
     }
 }
