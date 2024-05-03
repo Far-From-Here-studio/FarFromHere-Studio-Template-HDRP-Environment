@@ -2771,7 +2771,7 @@
                     "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
                     "m_Guid": ""
                 },
-                "layerTextureType": 0
+                "layerTextureType": 1
             }
         ],
         "procedural": false,
@@ -3680,7 +3680,7 @@
                     "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
                     "m_Guid": ""
                 },
-                "layerTextureType": 0
+                "layerTextureType": 1
             }
         ],
         "procedural": false,
@@ -5612,7 +5612,7 @@
                     "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
                     "m_Guid": ""
                 },
-                "layerTextureType": 0
+                "layerTextureType": 1
             }
         ],
         "procedural": false,
