@@ -21,7 +21,7 @@ class VFXElementsRenderer : CustomPass
     {
         if (VFXOrthoCamera && VFXBufferRT)
         {
-
+            VFXOrthoCamera.targetTexture = VFXBuffer;
             ctx.cmd.SetRenderTarget(VFXBuffer);
             ctx.cmd.ClearRenderTarget(true, true, Color.black);
 
@@ -31,6 +31,7 @@ class VFXElementsRenderer : CustomPass
                 ctx.cullingResults = ctx.renderContext.Cull(ref cullingParams);
             }
             CustomPassUtils.RenderFromCamera(ctx, VFXOrthoCamera, DefaultLayerMask);
+            VFXOrthoCamera.targetTexture = null;    
         }
     }
     protected override void Cleanup()

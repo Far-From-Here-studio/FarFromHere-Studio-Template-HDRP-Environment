@@ -186,6 +186,9 @@
         },
         {
             "m_Id": "62bbbc02796d4cb69367af92563a0079"
+        },
+        {
+            "m_Id": "5f164f3d655541af8176cce6c42e299d"
         }
     ],
     "m_GroupDatas": [
@@ -651,6 +654,20 @@
             "m_InputSlot": {
                 "m_Node": {
                     "m_Id": "88ac64f4ac3b4739937bd51278da2174"
+                },
+                "m_SlotId": 2
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "5f164f3d655541af8176cce6c42e299d"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "4afc037bd6f74f54ab4bfe05a667c22e"
                 },
                 "m_SlotId": 2
             }
@@ -1832,7 +1849,7 @@
     "m_ShaderOutputName": "RAYTRACED",
     "m_StageCapability": 3,
     "m_Value": {
-        "x": -1.0,
+        "x": 7.0,
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
@@ -3257,6 +3274,42 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.IntegerNode",
+    "m_ObjectId": "5f164f3d655541af8176cce6c42e299d",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Integer",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -1008.5302734375,
+            "y": 623.4696655273438,
+            "width": 130.0,
+            "height": 113.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "a839478123f343c0a3c2ab1ae7eff795"
+        }
+    ],
+    "synonyms": [
+        "whole number"
+    ],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Value": 7
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "60186e4424014073bb2fe2c2cb92f3d7",
     "m_Id": 1,
@@ -4590,10 +4643,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1119.0,
-            "y": -13.000019073486329,
-            "width": 135.00006103515626,
-            "height": 34.00000762939453
+            "x": -1588.0,
+            "y": 4.000015735626221,
+            "width": 135.0,
+            "height": 33.99998474121094
         }
     },
     "m_Slots": [
@@ -4852,6 +4905,21 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "a839478123f343c0a3c2ab1ae7eff795",
+    "m_Id": 0,
+    "m_DisplayName": "Out",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.GroupData",
     "m_ObjectId": "a848c55589cf47e09e1cfeec0b4e1755",
     "m_Title": "Apply Hue Variation",
@@ -5015,10 +5083,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1119.0,
-            "y": 20.999990463256837,
-            "width": 145.0,
-            "height": 138.0
+            "x": -1546.9998779296875,
+            "y": 146.0,
+            "width": 144.9998779296875,
+            "height": 138.00003051757813
         }
     },
     "m_Slots": [
