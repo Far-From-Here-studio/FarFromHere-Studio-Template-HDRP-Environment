@@ -1,6 +1,8 @@
 # Far From Here Studio Template: HDRP Environment
 Compatible *Unity Version* : **Unity 6 preview**
 
+AssetStore official link : https://assetstore.unity.com/packages/templates/tutorials/farfromherestudio-template-hdrp-environment-271079
+
 *Repository use Git LFS*
 
 ![PromotionalScreenShot](https://static.wixstatic.com/media/40e3ee_5e6da52be8864ff88fff07d243f00fd8~mv2.png/v1/fill/w_723,h_406,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Capture%20d'%C3%A9cran%202024-05-05%20102935.png)
@@ -36,7 +38,7 @@ https://assetstore.unity.com/packages/3d/environments/unity-terrain-hdrp-demo-sc
 
 
 ## Installation Guide
-- Clone the Far From Here Studio Template: HDRP Environment
+- Clone the Far From Here Studio Template: HDRP Environment from git or install from the Asset Store
 - Open Unity project
 - Install Terrain Sample Asset Pack (https://assetstore.unity.com/packages/3d/environments/landscapes/terrain-sample-asset-pack-145808)
 
