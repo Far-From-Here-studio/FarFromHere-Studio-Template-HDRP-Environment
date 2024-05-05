@@ -7,12 +7,6 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.unity.asset-store-tools": {
-      "version": "file:com.unity.asset-store-tools",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
     "com.unity.bindings.openimageio": {
       "version": "1.0.0",
       "depth": 1,
