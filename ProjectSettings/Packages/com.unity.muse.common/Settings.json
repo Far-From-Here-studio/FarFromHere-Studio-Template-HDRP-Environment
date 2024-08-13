@@ -1,5 +1,16 @@
 {
     "m_Dictionary": {
-        "m_DictionaryValues": []
+        "m_DictionaryValues": [
+            {
+                "type": "Unity.Muse.Common.Editor.Settings.PreferenceDataWrapper`1[[System.Collections.Generic.List`1[[Unity.Muse.Common.Account.OrganizationInfo, Unity.Muse.Common, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Unity.Muse.Common.Preferences, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "key": "Unity.Muse.Common.Preferences.organizations",
+                "value": "{\"m_Value\":{\"value\":[{\"rid\":1000},{\"rid\":1001},{\"rid\":1002}]},\"references\":{\"version\":2,\"RefIds\":[{\"rid\":1000,\"type\":{\"class\":\"OrganizationInfo\",\"ns\":\"Unity.Muse.Common.Account\",\"asm\":\"Unity.Muse.Common\"},\"data\":{\"org_id\":\"9071889164131\",\"org_name\":\"Far From Here AS Publisher\",\"status\":\"not-entitled\"}},{\"rid\":1001,\"type\":{\"class\":\"OrganizationInfo\",\"ns\":\"Unity.Muse.Common.Account\",\"asm\":\"Unity.Muse.Common\"},\"data\":{\"org_id\":\"9071292606307\",\"org_name\":\"Far From Here\",\"status\":\"subscription-expired\"}},{\"rid\":1002,\"type\":{\"class\":\"OrganizationInfo\",\"ns\":\"Unity.Muse.Common.Account\",\"asm\":\"Unity.Muse.Common\"},\"data\":{\"org_id\":\"1110299\",\"org_name\":\"hugo kostic\",\"status\":\"not-entitled\"}}]}}"
+            },
+            {
+                "type": "Unity.Muse.Common.Editor.Settings.PreferenceDataWrapper`1[[Unity.Muse.Common.Account.OrganizationInfo, Unity.Muse.Common, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], Unity.Muse.Common.Preferences, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "key": "Unity.Muse.Common.Preferences.organization",
+                "value": "{\"m_Value\":{\"value\":{\"rid\":1000}},\"references\":{\"version\":2,\"RefIds\":[{\"rid\":1000,\"type\":{\"class\":\"OrganizationInfo\",\"ns\":\"Unity.Muse.Common.Account\",\"asm\":\"Unity.Muse.Common\"},\"data\":{\"org_id\":\"9071889164131\",\"org_name\":\"Far From Here AS Publisher\",\"status\":\"not-entitled\"}}]}}"
+            }
+        ]
     }
 }

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 3997e2241185407d80309a82f9148466
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.2
+  assetPath: Assets/TerrainDemoScene_HDRP/TextMeshPro/Shaders/TextMeshPro/TMPro_Properties.cginc
+  uploadId: 531742
