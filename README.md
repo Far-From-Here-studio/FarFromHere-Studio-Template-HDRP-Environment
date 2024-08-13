@@ -19,7 +19,7 @@ Changelogs:
 https://docs.google.com/document/d/1D3GfPXt4xNl0uEiJ2KbdwPJG32d7b5WaZLC7PB66lQM/edit?usp=sharing
 
 Unity6 preview : Updated Installation Guide!!
-- No more unitypackage to unpack, and load any Scene for Bootstrap Demo
+- No more unitypackage to unpack, and load any Scenes from BootstrapDemo.unity (in Assets/FarFromHere) using the Scene Loader
 - A lot more template content and resources included
 
 Unity Forum Tread : 
