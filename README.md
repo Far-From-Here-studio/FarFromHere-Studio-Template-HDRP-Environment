@@ -1,5 +1,5 @@
 # Far From Here Studio Template: HDRP Environment
-Compatible *Unity Version* : **Unity 6 preview**
+Compatible *Unity Version* : **Unity 6 preview** (6000.0+)
 
 AssetStore official link : https://assetstore.unity.com/packages/templates/tutorials/farfromherestudio-template-hdrp-environment-271079
 
