@@ -65,6 +65,8 @@ public class GetWindPropertyBlock : MonoBehaviour
         if (_manager.World.IsCreated == false) return;
         if (_manager.World.Time.ElapsedTime < 0.5f) return;
 
+
+        //Need to change with MaterialReference (using id(int))
         if (init == false)
         {
             rendermesharrayfinder = _manager.CreateEntityQuery(typeof(RenderMeshArray));
@@ -103,7 +105,7 @@ public class GetWindPropertyBlock : MonoBehaviour
             //Use the matching stored index to inject the right Materials
             for (var x = 0; x < rendermesharraydata.Materials.Length; x++)
             {
-                    if(matsIndex[x] != null) SetSpeedTreeWindParametersForMaterial(matsIndex[x], rendermesharraydata.Materials[x]);
+                    if(matsIndex[x] != null) SetSpeedTreeWindParametersForMaterial(matsIndex[x],rendermesharraydata.Materials[x]);
             }
       
         // _manager.SetSharedComponentManaged<RenderMeshArray>(arraysharedEntity, rendermesharraydata);
