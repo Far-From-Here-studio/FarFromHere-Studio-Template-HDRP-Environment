@@ -54,22 +54,23 @@ public class FullScreenWetnessController : MonoBehaviour
     public GameObject DebugNormalPass;
     void Update()
     {
-        if (DebugVertexColorPass && DebugVertexColor)
+        if (DebugVertexColorPass)
         {
             DebugVertexColorPass.SetActive(DebugVertexColor);
         }
-        if (DebugRoughnessPass && DebugRoughness)
+        if (DebugRoughnessPass)
         {
             DebugRoughnessPass.SetActive(DebugRoughness);
         }
-        if (DebugNormalPass && DebugNormalMap)
+        if (DebugNormalPass)
         {
             DebugNormalPass.SetActive(DebugNormalMap);
         }
         if (FullScreenWetness)
         {
-            FullScreenWetness.SetFloat("_WaterSmoothness", Wetness);
-            FullScreenWetness.SetFloat("_DropletStrenght", RainDropStrenght);
+            var snow = Shader.GetGlobalFloat("_SnowCover");
+            FullScreenWetness.SetFloat("_WaterSmoothness", Wetness * (1-snow));
+            FullScreenWetness.SetFloat("_DropletStrenght", RainDropStrenght * (1-snow));
             FullScreenWetness.SetFloat("_DistanceView", DetailsDistance);
         }
         if(RainOnCamera)

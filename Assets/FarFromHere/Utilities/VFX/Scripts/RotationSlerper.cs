@@ -43,6 +43,11 @@ public class RotationSlerper : MonoBehaviour
     void OnDestroy()
     {
         // Release memory when the script is destroyed
+        //targetRotations.Dispose();
+    }
+    void OnDisable()
+    {
+        // Release memory when the script is destroyed
         targetRotations.Dispose();
     }
 

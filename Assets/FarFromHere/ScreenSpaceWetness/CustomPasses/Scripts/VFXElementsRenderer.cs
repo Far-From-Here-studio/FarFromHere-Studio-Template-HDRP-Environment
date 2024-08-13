@@ -36,6 +36,6 @@ class VFXElementsRenderer : CustomPass
     }
     protected override void Cleanup()
     {
-        VFXBuffer.Release();
+        //RTHandles.Release(VFXBuffer);
     }
 }

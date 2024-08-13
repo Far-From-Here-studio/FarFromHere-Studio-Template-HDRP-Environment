@@ -67,7 +67,7 @@ public class SceneLoader : MonoBehaviour
     }
 #endif
 
-    private void Start()
+    private void OnEnable()
     {
         if (LoadAtStart) LoadScene(sceneLists[ListIndex].scenesName[ListIndex]);
     }
