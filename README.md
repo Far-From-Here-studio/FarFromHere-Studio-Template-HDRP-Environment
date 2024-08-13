@@ -29,25 +29,6 @@ https://forum.unity.com/threads/farfromherestudio-template-hdrp-environment.1549
 ## Important Disclaimer (ThirdParty)
 Third-Party Content see ThirdPartyNotice.txt after installation
 
-In order to fully run the template project's Demo Scene, you will need to install (Free) Resources from *Unity Technologies* from the **Asset Store** :
-
-https://assetstore.unity.com/packages/3d/environments/landscapes/terrain-sample-asset-pack-145808
-
-
-https://assetstore.unity.com/packages/3d/environments/unity-terrain-hdrp-demo-scene-213198
-
-
-## Installation Guide
-- Clone the Far From Here Studio Template: HDRP Environment from git or install from the Asset Store
-- Open Unity project
-- Install Terrain Sample Asset Pack (https://assetstore.unity.com/packages/3d/environments/landscapes/terrain-sample-asset-pack-145808)
-
-  => skip setup process
-
-  
-- Install Unity Terrain - HDRP Demo Scene (https://assetstore.unity.com/packages/3d/environments/unity-terrain-hdrp-demo-scene-213198)
-  
-  => skip setup process
   
 - Open Scene at : Assets/FarFromHere/BootstrapDemo.unity 
 - Use SceneLoader to load SampleEnvironment's DemoScene
@@ -60,8 +41,9 @@ https://assetstore.unity.com/packages/3d/environments/unity-terrain-hdrp-demo-sc
 - Polybrush
 - Probuilder
 - Muse Texture & Sprite (need subcription to be used)
-
-
+- Unity Terrain - HDRP Demo Scene (https://assetstore.unity.com/packages/3d/environments/unity-terrain-hdrp-demo-scene-213198)
+- Terrain Sample Asset Pack (https://assetstore.unity.com/packages/3d/environments/landscapes/terrain-sample-asset-pack-145808)
+  
 ## Demo Scene Content : 
 - Documentation
 - Fantasy typed outdoor Scene
