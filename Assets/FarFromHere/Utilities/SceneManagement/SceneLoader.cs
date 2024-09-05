@@ -10,8 +10,9 @@ using UnityEditor.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     public bool LoadAtStart;
-    public int ListIndex = 0;
+    public int ListIndexToLoadAtStart = 0;
 
+    
     public List<SceneList> sceneLists;
 
     [System.Serializable]
@@ -19,8 +20,12 @@ public class SceneLoader : MonoBehaviour
     {
         public string listName;
         public List<UnityEngine.Object> scenes;
+        [HideInInspector]
         public List<string> scenesName;
     }
+
+    // Store the last known state of the scenes in the script
+    private List<string> previousScenePaths = new List<string>();
 
     public void LoadScene(string sceneName)
     {
@@ -65,11 +70,84 @@ public class SceneLoader : MonoBehaviour
 
         EditorUtility.SetDirty(this);
     }
+    public void SetEditorBuildSettingsScenes()
+    {
+        // Retrieve existing build settings scenes
+        List<EditorBuildSettingsScene> editorBuildSettingsScenes = new List<EditorBuildSettingsScene>(EditorBuildSettings.scenes);
+
+        // Create a hash set for efficient lookup of the scenes that should be in the build from the script's lists
+        HashSet<string> targetScenePaths = new HashSet<string>();
+
+        // Populate the hash set with scenes from the script's scene lists
+        foreach (SceneList sceneList in sceneLists)
+        {
+            foreach (UnityEngine.Object sceneAsset in sceneList.scenes)
+            {
+                string scenePath = AssetDatabase.GetAssetPath(sceneAsset);
+                if (!string.IsNullOrEmpty(scenePath))
+                {
+                    targetScenePaths.Add(scenePath);
+                }
+            }
+        }
+
+        // Remove scenes from the build settings that were removed from the script's scene lists (compared to previous state)
+        for (int i = editorBuildSettingsScenes.Count - 1; i >= 0; i--)
+        {
+            string buildScenePath = editorBuildSettingsScenes[i].path;
+            if (previousScenePaths.Contains(buildScenePath) && !targetScenePaths.Contains(buildScenePath))
+            {
+                // Remove scene from build settings if it was previously in the script's list but now it's not
+                editorBuildSettingsScenes.RemoveAt(i);
+            }
+        }
+
+        // Add new scenes that are in the scene lists but not already in the build settings
+        foreach (string scenePath in targetScenePaths)
+        {
+            bool sceneAlreadyInBuild = editorBuildSettingsScenes.Exists(buildScene => buildScene.path == scenePath);
+            if (!sceneAlreadyInBuild)
+            {
+                EditorBuildSettingsScene newScene = new EditorBuildSettingsScene(scenePath, true);
+                editorBuildSettingsScenes.Add(newScene);
+            }
+        }
+
+        // Apply the updated scene list to the build settings
+        EditorBuildSettings.scenes = editorBuildSettingsScenes.ToArray();
+
+        // Update the previousScenePaths list to reflect the current state of the script's scene lists
+        previousScenePaths = new List<string>(targetScenePaths);
+
+        Debug.Log("Build settings updated: scenes added, and removed if they were removed from the scene lists.");
+    }
+
+    // Helper function to check if a scene was added from the script lists
+    private bool IsSceneInLists(string scenePath)
+    {
+        foreach (SceneList sceneList in sceneLists)
+        {
+            foreach (UnityEngine.Object sceneAsset in sceneList.scenes)
+            {
+                if (AssetDatabase.GetAssetPath(sceneAsset) == scenePath)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private void OnValidate()
+    {
+        PopulateSceneListNames();
+        SetEditorBuildSettingsScenes();
+    }
 #endif
 
     private void OnEnable()
     {
-        if (LoadAtStart) LoadScene(sceneLists[ListIndex].scenesName[ListIndex]);
+        if (LoadAtStart) LoadScene(sceneLists[ListIndexToLoadAtStart].scenesName[ListIndexToLoadAtStart]);
     }
 
     public void UnloadScene(string sceneName)
