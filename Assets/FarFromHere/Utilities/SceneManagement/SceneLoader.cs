@@ -12,7 +12,7 @@ public class SceneLoader : MonoBehaviour
     public bool LoadAtStart;
     public int ListIndexToLoadAtStart = 0;
 
-    
+
     public List<SceneList> sceneLists;
 
     [System.Serializable]
@@ -118,8 +118,6 @@ public class SceneLoader : MonoBehaviour
 
         // Update the previousScenePaths list to reflect the current state of the script's scene lists
         previousScenePaths = new List<string>(targetScenePaths);
-
-        Debug.Log("Build settings updated: scenes added, and removed if they were removed from the scene lists.");
     }
 
     // Helper function to check if a scene was added from the script lists
