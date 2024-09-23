@@ -1569,13 +1569,45 @@
         "450c8c88-6855-4c69-9d46-3b6c213e9f62",
         "6bcc45f0-154a-412b-b1c4-f358d8cc1096",
         "9b36eebe-a07b-41b0-80b6-80ecfce3481e",
-        "8cb87837-b6cc-4485-afbc-36ac6e828b9c"
+        "8cb87837-b6cc-4485-afbc-36ac6e828b9c",
+        "e7efffcc-99c6-45ec-ba0d-96102b369294",
+        "b4b5a634-af99-4c07-a313-919e9254066a",
+        "f39510d2-8b9f-46bc-9ffa-17ccb24b87c8",
+        "f6fd00b3-9f1c-41c8-a451-cf62afbd04f4",
+        "48e10cef-f93f-42a5-8b4a-67cb46683fc6",
+        "1a2c706b-36a6-4912-9d45-990b2420dad7",
+        "2e9ea592-7322-44f5-bf44-015118b49350",
+        "9c54b36e-e341-465e-a7c8-fe0986eea9a3",
+        "7554f72c-6051-4be0-8d1b-8e1f884c3814",
+        "34e5a8c6-fdeb-4be7-8eb2-9dbbea24364e",
+        "da475c72-5c2f-4c1d-bbfe-1dd603eb885d",
+        "81a8f0f2-e48a-41cd-8896-8b073d6f4627",
+        "0be0326f-9ba4-4b4e-9352-34e0e65ef33a",
+        "816f2777-9670-43a2-ac55-b7f27d475244",
+        "99632ebd-618e-4f53-b7c5-5b6369672c95",
+        "2ced10b6-e287-4933-994b-1113176cd4f3"
     ],
     "m_PropertyIds": [
         374980739,
         -1920596915,
         -1152536816,
-        -125767622
+        -125767622,
+        638016923,
+        203771548,
+        -1313265056,
+        570323876,
+        119330589,
+        -1887624332,
+        1811490327,
+        1885173262,
+        889372792,
+        -1968585911,
+        500110821,
+        -525799987,
+        -1704352322,
+        1948820438,
+        541584877,
+        -2061773377
     ],
     "m_Dropdowns": [],
     "m_DropdownSelectedEntries": []
@@ -3128,7 +3160,7 @@
     "m_TransparentDepthPrepass": true,
     "m_TransparentDepthPostpass": true,
     "m_TransparentPerPixelSorting": false,
-    "m_SupportLodCrossFade": false
+    "m_SupportLodCrossFade": true
 }
 
 {
@@ -4813,7 +4845,7 @@
     "m_SupportLodCrossFade": false,
     "m_DoubleSidedMode": 0,
     "m_DOTSInstancing": false,
-    "m_CustomVelocity": true,
+    "m_CustomVelocity": false,
     "m_Tessellation": false,
     "m_TessellationMode": 0,
     "m_TessellationFactorMinDistance": 20.0,
