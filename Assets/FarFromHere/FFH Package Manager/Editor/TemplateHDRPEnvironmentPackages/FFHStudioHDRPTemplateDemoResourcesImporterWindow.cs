@@ -73,10 +73,8 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
     void OnGUI()
     {
         if (packageData == null) return;
-
-        GUILayout.Label("Packages", EditorStyles.boldLabel);
-
         allPackagesInstalled = true;
+        GUILayout.Label("Project's Core Packages", EditorStyles.boldLabel);
 
         foreach (var package in packageData.Packages)
         {
@@ -85,12 +83,11 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
         }
 
         EditorGUILayout.Space(25f);
-        GUILayout.Label("Resouces", EditorStyles.boldLabel);
+        GUILayout.Label("Project's Resouces Packages", EditorStyles.boldLabel);
         foreach (var resourcepackage in packageData.ResourcesPackages)
         {
             DrawPackageGUI(resourcepackage);
         }
-
 
         EditorGUILayout.Space(25f);
         if (addRequest == null) progressValue = 0;
@@ -109,6 +106,7 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
     {
         EditorGUILayout.Space();
         EditorGUILayout.BeginHorizontal();
+
         package.GUIState = EditorGUILayout.BeginFoldoutHeaderGroup(package.GUIState, package.FolderGroupLabel);
 
         GUILayout.FlexibleSpace();
@@ -132,7 +130,8 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
 
             if (GUILayout.Button("Embed Package"))
             {
-                EmbedPackage(package.Name);
+                Debug.Log(package.EmbededPackages);
+                EmbedPackage(package);
             }
 
             EditorGUILayout.EndHorizontal();
@@ -216,14 +215,20 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
         RemoveSymbols();
 
         // Check if the package is embedded
-        string packagePath = Path.Combine(Application.dataPath, "..", "Packages", package.Name);
-        bool isEmbedded = Directory.Exists(packagePath);
+        string projectpath = Path.GetDirectoryName(Application.dataPath);
+        Debug.Log("project path " + projectpath);
+
+        string packagePath = Path.Combine(projectpath, "Packages", package.Name);
+        Debug.Log("packagePath" + packagePath);
+
+        bool isEmbedded = package.EmbededPackages;
 
         if (isEmbedded)
         {
             if (EditorUtility.DisplayDialog("Remove Embedded Package",
                 $"The package '{package.Name}' is embedded. Removing it will delete the package folder and update the manifest. This action cannot be undone. Are you sure you want to proceed?",
-                "Yes", "No"))
+                "Yes",
+                "No"))
             {
                 RemoveEmbeddedPackage(package.Name);
             }
@@ -241,7 +246,10 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
         removeRequest = Client.Remove(packageName);
         EditorApplication.update += RemoveProgress;
 
-        string packagePath = Path.Combine(Application.dataPath, "..", "Packages", packageName);
+        // Check if the package is embedded
+        string projectpath = Path.GetDirectoryName(Application.dataPath); 
+        Debug.Log("project path " + projectpath);
+        string packagePath = Path.Combine(projectpath, "Packages", packageName);
         Debug.Log("packagePath" + packagePath);
         string manifestPath = Path.Combine(Application.dataPath, "..", "Packages", "manifest.json");
         Debug.Log("manifest" + manifestPath);
@@ -253,6 +261,7 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
             {
                 Directory.Delete(packagePath, true);
             }
+            AssetDatabase.Refresh();
             Debug.Log($"Successfully removed embedded package: {packageName}");
         }
         catch (System.Exception e)
@@ -276,15 +285,16 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
             }
 
 
-            AssetDatabase.Refresh();
+            //;
             EditorApplication.update -= RemoveProgress;
         }
     }
 
-    static void EmbedPackage(string packageName)
+    static void EmbedPackage(PackageActive package)
     {
-        Debug.Log($"{packageName} Embedding...");
-        embedRequest = Client.Embed(packageName);
+        Debug.Log($"{package.Name} Embedding...");
+        embedRequest = Client.Embed(package.Name);
+        package.EmbededPackages = true;
         EditorApplication.update += EmbedProgress;
     }
 

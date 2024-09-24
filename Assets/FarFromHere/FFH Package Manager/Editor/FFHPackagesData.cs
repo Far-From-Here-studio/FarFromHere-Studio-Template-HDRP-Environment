@@ -5,6 +5,7 @@ using UnityEngine;
 public class PackageActive
 {
     public bool InstalledPackages { get; set; }
+    public bool EmbededPackages { get; set; }
     public bool GUIState { get; set; }
     public string Name;
     public string Address;
