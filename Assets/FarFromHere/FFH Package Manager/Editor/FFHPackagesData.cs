@@ -2,24 +2,37 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class packageActive
+public class PackageActive
 {
-    public bool InstalledPackages{ get; set; }
+    public bool InstalledPackages { get; set; }
     public bool GUIState { get; set; }
     public string Name;
-    public string Adress;
-    public string folderGroupLabel;
+    public string Address;
+    public string FolderGroupLabel;
 }
 
 [CreateAssetMenu(fileName = "FFH Packages", menuName = "FFH/PackageData")]
 public class FFHPackagesData : ScriptableObject
 {
-    public bool ShowAtStart { get; set; }
+    [SerializeField] private bool showAtStart;
+    public bool ShowAtStart
+    {
+        get => showAtStart;
+        set
+        {
+            if (showAtStart != value)
+            {
+                showAtStart = value;
+                OnShowAtStartChanged?.Invoke(showAtStart);
+            }
+        }
+    }
+
+    public event System.Action<bool> OnShowAtStartChanged;
 
     public string PackageListDefineSymbols;
     public bool AddedSymbols { get; set; }
 
-    public packageActive[] Packages;
-    public List<string> PackagesNames { get; set; }
-
+    public PackageActive[] Packages;
+    public List<string> PackagesNames { get; set; } = new List<string>();
 }

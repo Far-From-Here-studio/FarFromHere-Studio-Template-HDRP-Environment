@@ -1,194 +1,177 @@
-using UnityEditor.PackageManager.Requests;
-using UnityEditor.PackageManager;
-using UnityEngine;
 using UnityEditor;
-using System.Collections.Generic;
+using UnityEditor.PackageManager;
+using UnityEditor.PackageManager.Requests;
+using UnityEngine;
 using System.Linq;
+using System.Collections.Generic;
 using UnityEditor.Build;
-using UnityEngine.Assertions.Must;
 
 [InitializeOnLoad]
 public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
 {
-    static SearchRequest searchRequest;
-    static AddRequest addRequest;
-    static RemoveRequest removeRequest;
-    static EmbedRequest embedRequest;
-    static ListRequest listRequest;
+    private const string SHOW_ON_START_PREF = "FFHStudio_ShowOnStart";
+    private const string PACKAGE_DATA_NAME = "FFH_Template_HDRP_Demo_Resources";
 
-    private static bool showOnStart;
-    [SerializeField]
-    static FFHPackagesData data;
-
-    private packageActive package;
+    private static FFHPackagesData packageData;
     private static bool allPackagesInstalled;
 
-    [MenuItem("FarFromHereStudio/ Packages Installer/ HDRP: Template Environment")]
+    private static ListRequest listRequest;
+    private static AddRequest addRequest;
+    private static RemoveRequest removeRequest;
+    private static EmbedRequest embedRequest;
+
+    [MenuItem("FarFromHereStudio/Packages Installer/HDRP: Template Environment")]
     public static void Init()
     {
-
-        FFHStudioHDRPTemplateDemoResourcesImporterEditor window = (FFHStudioHDRPTemplateDemoResourcesImporterEditor)GetWindow(typeof(FFHStudioHDRPTemplateDemoResourcesImporterEditor));
+        var window = GetWindow<FFHStudioHDRPTemplateDemoResourcesImporterEditor>();
+        window.titleContent = new GUIContent("FFH Package Installer");
         window.Show();
     }
+
     static FFHStudioHDRPTemplateDemoResourcesImporterEditor()
     {
-        if (EditorApplication.isCompiling && EditorApplication.isUpdating) return;
-        EditorApplication.update += Startup;
+        EditorApplication.delayCall += Startup;
     }
+
     static void Startup()
     {
-        if (EditorApplication.isCompiling && EditorApplication.isUpdating) return;
+        if (EditorApplication.isCompiling || EditorApplication.isUpdating) return;
 
-        if (!data)
+        LoadPackageData();
+        if (packageData != null)
         {
-            string[] assetPaths = AssetDatabase.FindAssets("FFH_Template_HDRP_Demo_Resources");
-            if (assetPaths.Length > 0)
-            {
-                string assetPath = AssetDatabase.GUIDToAssetPath(assetPaths[0]);
-                data = AssetDatabase.LoadAssetAtPath<FFHPackagesData>(assetPath);
-            }
-            EditorUtility.SetDirty(data);
-        }
-        if (data)
-        {
-            if (showOnStart) Init();
+            if (EditorPrefs.GetBool(SHOW_ON_START_PREF, false)) Init();
             ListPackages();
-            showOnStart = GetStartupValue(data);
         }
-        EditorApplication.update -= Startup;
     }
 
-    public static bool GetStartupValue(FFHPackagesData FFHData)
+    static void LoadPackageData()
     {
-        return FFHData.ShowAtStart;
+        string[] assetPaths = AssetDatabase.FindAssets(PACKAGE_DATA_NAME);
+        if (assetPaths.Length > 0)
+        {
+            string assetPath = AssetDatabase.GUIDToAssetPath(assetPaths[0]);
+            packageData = AssetDatabase.LoadAssetAtPath<FFHPackagesData>(assetPath);
+            if (packageData != null)
+            {
+                EditorUtility.SetDirty(packageData);
+                packageData.ShowAtStart = EditorPrefs.GetBool(SHOW_ON_START_PREF, false);
+                packageData.OnShowAtStartChanged += HandleShowAtStartChanged;
+            }
+        }
+    }
+
+    static void HandleShowAtStartChanged(bool newValue)
+    {
+        EditorPrefs.SetBool(SHOW_ON_START_PREF, newValue);
     }
 
     void OnGUI()
     {
+        if (packageData == null) return;
+
         GUILayout.Label("Package Settings", EditorStyles.boldLabel);
 
         allPackagesInstalled = true;
 
-        if (!data)
+        foreach (var package in packageData.Packages)
         {
-            string[] assetPaths = AssetDatabase.FindAssets("FFH_MeteoVFX_DemoResources");
-            if (assetPaths.Length > 0)
-            {
-                string assetPath = AssetDatabase.GUIDToAssetPath(assetPaths[0]);
-                data = AssetDatabase.LoadAssetAtPath<FFHPackagesData>(assetPath);
-            }
-        }
-        if (!data) return;
-        EditorUtility.SetDirty(data);
-        // Display import/remove buttons for each package
-        for (int i = 0; i < data.Packages.Length; i++)
-        {
-            DrawPackageGUI(ref data.Packages[i], ref data);
-            if (data.Packages[i].InstalledPackages == false) allPackagesInstalled = false;
+            DrawPackageGUI(package);
+            if (!package.InstalledPackages) allPackagesInstalled = false;
         }
 
+        DrawDefineSymbolsGUI();
 
-        if (!string.IsNullOrEmpty(data.PackageListDefineSymbols))
-        {
-            if (!allPackagesInstalled && data.AddedSymbols)
-            {
-                if (GUILayout.Button("Remove Define Symbol"))
-                {
-                    RemoveSymbols();
-                }
-            }
-            if (allPackagesInstalled && !data.AddedSymbols)
-            {
-                if (GUILayout.Button("Add Define Symbol"))
-                {
-                    AddSymbols();
-                }
-            }
-        }
-
-        // If all packages are installed and symbols haven't been added, add symbols
         GUILayout.FlexibleSpace();
-        data.ShowAtStart = GUILayout.Toggle(data.ShowAtStart, "Show On Startup");
+        packageData.ShowAtStart = EditorGUILayout.Toggle("Show On Startup", packageData.ShowAtStart);
     }
 
-    void DrawPackageGUI(ref packageActive package, ref FFHPackagesData data)
+    void DrawPackageGUI(PackageActive package)
     {
         EditorGUILayout.Space();
         EditorGUILayout.BeginHorizontal();
-        package.GUIState = EditorGUILayout.BeginFoldoutHeaderGroup(package.GUIState, package.folderGroupLabel);
+        package.GUIState = EditorGUILayout.BeginFoldoutHeaderGroup(package.GUIState, package.FolderGroupLabel);
 
         GUILayout.FlexibleSpace();
-        GUILayout.Toggle(package.InstalledPackages, "Installed");
+        EditorGUI.BeginDisabledGroup(true);
+        //EditorGUILayout.TextField(package.FolderGroupLabel);
+        EditorGUILayout.Toggle("Installed", package.InstalledPackages);
+        EditorGUI.EndDisabledGroup();
         EditorGUILayout.EndHorizontal();
-        EditorGUILayout.BeginHorizontal();
 
         if (package.GUIState)
         {
+            EditorGUILayout.BeginHorizontal();
             if (GUILayout.Button("Import Package"))
             {
-                Debug.Log(package.Name + " Installation..");
                 AddPackage(package);
             }
 
             if (GUILayout.Button("Remove Package"))
             {
-                RemoveSymbols();
-                Debug.Log(package.Name + " Uninstallation...");
-
                 RemovePackage(package);
             }
 
             if (GUILayout.Button("Embed Package"))
             {
-                Debug.Log(package.Name + " Embedding...");
                 EmbedPackage(package.Name);
             }
+
+            EditorGUILayout.EndHorizontal();
         }
 
-        GUILayout.FlexibleSpace();
-        EditorGUILayout.EndHorizontal();
         EditorGUILayout.EndFoldoutHeaderGroup();
-
-
-
     }
 
+    void DrawDefineSymbolsGUI()
+    {
+        if (string.IsNullOrEmpty(packageData.PackageListDefineSymbols)) return;
+
+        if (!allPackagesInstalled && packageData.AddedSymbols)
+        {
+            if (GUILayout.Button("Remove Define Symbol"))
+            {
+                RemoveSymbols();
+            }
+        }
+        else if (allPackagesInstalled && !packageData.AddedSymbols)
+        {
+            if (GUILayout.Button("Add Define Symbol"))
+            {
+                AddSymbols();
+            }
+        }
+    }
 
     static void ListPackages()
     {
-        data.PackagesNames = new List<string>();
         listRequest = Client.List(false, true);
         EditorApplication.update += ListProgress;
     }
+
     static void ListProgress()
     {
         if (listRequest.IsCompleted)
         {
             if (listRequest.Status == StatusCode.Success)
             {
-                foreach (var package in listRequest.Result)
-                {
-                    data.PackagesNames.Add(package.name);
-                }
+                packageData.PackagesNames = listRequest.Result.Select(p => p.name).ToList();
                 CheckAllPackages();
             }
             else if (listRequest.Status >= StatusCode.Failure)
             {
-                Debug.Log(listRequest.Error.message);
+                Debug.LogError($"Error listing packages: {listRequest.Error.message}");
             }
+
             EditorApplication.update -= ListProgress;
         }
     }
 
-    static void AddPackage(packageActive package)
+    static void AddPackage(PackageActive package)
     {
-
-        addRequest = Client.Add(package.Adress);
+        Debug.Log($"{package.Name} Installation...");
+        addRequest = Client.Add(package.Address);
         EditorApplication.update += AddProgress;
-        if (addRequest.IsCompleted)
-        {
-            ListPackages();
-        }
     }
 
     static void AddProgress()
@@ -197,19 +180,48 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
         {
             if (addRequest.Status == StatusCode.Success)
             {
-                Debug.Log("Installed: " + addRequest.Result.packageId);
+                Debug.Log($"Installed: {addRequest.Result.packageId}");
+                ListPackages();
             }
             else if (addRequest.Status >= StatusCode.Failure)
             {
-                Debug.Log(addRequest.Error.message);
+                Debug.LogError($"Error adding package: {addRequest.Error.message}");
             }
+
             EditorApplication.update -= AddProgress;
         }
     }
 
-    static void EmbedPackage(string packageNameOrID)
+    static void RemovePackage(PackageActive package)
     {
-        embedRequest = Client.Embed(packageNameOrID);
+        Debug.Log($"{package.Name} Uninstallation...");
+        RemoveSymbols();
+        removeRequest = Client.Remove(package.Name);
+        EditorApplication.update += RemoveProgress;
+    }
+
+    static void RemoveProgress()
+    {
+        if (removeRequest.IsCompleted)
+        {
+            if (removeRequest.Status == StatusCode.Success)
+            {
+                Debug.Log($"Uninstalled: {removeRequest.PackageIdOrName}");
+                ListPackages();
+            }
+            else if (removeRequest.Status >= StatusCode.Failure)
+            {
+                Debug.LogError($"Error removing package: {removeRequest.Error.message}");
+            }
+
+            EditorApplication.update -= RemoveProgress;
+        }
+    }
+
+    static void EmbedPackage(string packageName)
+    {
+        Debug.Log($"{packageName} Embedding...");
+        embedRequest = Client.Embed(packageName);
         EditorApplication.update += EmbedProgress;
     }
 
@@ -219,87 +231,53 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
         {
             if (embedRequest.Status == StatusCode.Success)
             {
-                Debug.Log("Embedding Package: " + embedRequest.Result.packageId);
+                Debug.Log($"Embedded: {embedRequest.Result.packageId}");
+                ListPackages();
             }
             else if (embedRequest.Status >= StatusCode.Failure)
             {
-                Debug.Log(embedRequest.Error.message);
+                Debug.LogError($"Error embedding package: {embedRequest.Error.message}");
             }
+
             EditorApplication.update -= EmbedProgress;
         }
     }
 
-    static void RemovePackage(packageActive package)
+    static void CheckAllPackages()
     {
-        RemoveSymbols();
-        removeRequest = Client.Remove(package.Name);
-        EditorApplication.update += RemoveProgress;
-        if (removeRequest.IsCompleted)
+        foreach (var package in packageData.Packages)
         {
-            ListPackages();
-        }
-    }
-
-    static void RemoveProgress()
-    {
-        if (removeRequest.IsCompleted)
-        {
-            if (removeRequest.Status == StatusCode.Success)
-            {
-                Debug.Log("Uninstalled: " + removeRequest.PackageIdOrName);
-            }
-            else if (removeRequest.Status >= StatusCode.Failure)
-            {
-                Debug.Log(removeRequest.Error.message);
-
-            }
-            EditorApplication.update -= RemoveProgress;
+            package.InstalledPackages = packageData.PackagesNames.Any(p => p.Contains(package.Name));
         }
     }
 
     static void AddSymbols()
     {
-        BuildTargetGroup buildTargetGroupSelected = EditorUserBuildSettings.selectedBuildTargetGroup;
-        string existingSymbols = PlayerSettings.GetScriptingDefineSymbols(NamedBuildTarget.FromBuildTargetGroup(buildTargetGroupSelected));
+        var buildTargetGroup = EditorUserBuildSettings.selectedBuildTargetGroup;
+        var existingSymbols = PlayerSettings.GetScriptingDefineSymbols(NamedBuildTarget.FromBuildTargetGroup(buildTargetGroup));
 
-        string newSymbols = existingSymbols + ";" + data.PackageListDefineSymbols;
-        PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.FromBuildTargetGroup(buildTargetGroupSelected), newSymbols);
-        Debug.Log("Added scripting define symbol: " + data.PackageListDefineSymbols);
+        var symbols = new HashSet<string>(existingSymbols.Split(';'));
+        symbols.Add(packageData.PackageListDefineSymbols);
 
-        data.AddedSymbols = true;
-        EditorApplication.update -= AddSymbols;
+        var newSymbols = string.Join(";", symbols);
+        PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.FromBuildTargetGroup(buildTargetGroup), newSymbols);
+        Debug.Log($"Added scripting define symbol: {packageData.PackageListDefineSymbols}");
+
+        packageData.AddedSymbols = true;
     }
+
     static void RemoveSymbols()
     {
-        BuildTargetGroup buildTargetGroupSelected = EditorUserBuildSettings.selectedBuildTargetGroup;
-        string existingSymbols = PlayerSettings.GetScriptingDefineSymbols(NamedBuildTarget.FromBuildTargetGroup(buildTargetGroupSelected));
+        var buildTargetGroup = EditorUserBuildSettings.selectedBuildTargetGroup;
+        var existingSymbols = PlayerSettings.GetScriptingDefineSymbols(NamedBuildTarget.FromBuildTargetGroup(buildTargetGroup));
 
-        string[] symbols = existingSymbols.Split(';').Where(s => s != data.PackageListDefineSymbols).ToArray();
-        string newSymbols = string.Join(";", symbols);
-        PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.FromBuildTargetGroup(buildTargetGroupSelected), newSymbols);
-        Debug.Log("Removed scripting define symbol: " + data.PackageListDefineSymbols);
+        var symbols = new HashSet<string>(existingSymbols.Split(';'));
+        symbols.Remove(packageData.PackageListDefineSymbols);
 
-        data.AddedSymbols = false;
-        EditorApplication.update -= RemoveSymbols;
-    }
+        var newSymbols = string.Join(";", symbols);
+        PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.FromBuildTargetGroup(buildTargetGroup), newSymbols);
+        Debug.Log($"Removed scripting define symbol: {packageData.PackageListDefineSymbols}");
 
-
-    static void CheckAllPackages()
-    {
-        // Loop through each package in data
-        for (var p = 0; p < data.Packages.Length; p++)
-        {
-            data.Packages[p].InstalledPackages = false;
-            // Check if the package exists in the installed packages list (PackagesNames)
-            foreach (var packagename in data.PackagesNames)
-            {
-                if (packagename.Contains(data.Packages[p].Name))
-                {
-                    data.Packages[p].InstalledPackages = true;
-                }
-            }
-
-        }
-        EditorApplication.update -= CheckAllPackages;
+        packageData.AddedSymbols = false;
     }
 }
