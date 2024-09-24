@@ -214,13 +214,6 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
 
         RemoveSymbols();
 
-        // Check if the package is embedded
-        string projectpath = Path.GetDirectoryName(Application.dataPath);
-        Debug.Log("project path " + projectpath);
-
-        string packagePath = Path.Combine(projectpath, "Packages", package.Name);
-        Debug.Log("packagePath" + packagePath);
-
         bool isEmbedded = package.EmbededPackages;
 
         if (isEmbedded)
@@ -231,6 +224,10 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
                 "No"))
             {
                 RemoveEmbeddedPackage(package.Name);
+            }
+            else
+            {
+                return;
             }
         }
         else
