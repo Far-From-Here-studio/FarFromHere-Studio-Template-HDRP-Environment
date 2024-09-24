@@ -7,6 +7,13 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.farfromhere.hdrp-template-demo-resources": {
+      "version": "https://github.com/Far-From-Here-studio/com.farfromhere.hdrp-template-demo-resources.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "0fe6be4bdf3a4dab86b9020112b535833e548306"
+    },
     "com.unity.asset-store-tools": {
       "version": "file:com.unity.asset-store-tools",
       "depth": 0,

@@ -34,5 +34,7 @@ public class FFHPackagesData : ScriptableObject
     public bool AddedSymbols { get; set; }
 
     public PackageActive[] Packages;
+
+    public PackageActive[] ResourcesPackages;
     public List<string> PackagesNames { get; set; } = new List<string>();
 }

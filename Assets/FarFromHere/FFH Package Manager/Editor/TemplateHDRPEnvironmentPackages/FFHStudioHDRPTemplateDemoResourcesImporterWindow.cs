@@ -5,6 +5,7 @@ using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEditor.Build;
+using System.IO;
 
 [InitializeOnLoad]
 public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
@@ -70,7 +71,7 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
     {
         if (packageData == null) return;
 
-        GUILayout.Label("Package Settings", EditorStyles.boldLabel);
+        GUILayout.Label("Packages", EditorStyles.boldLabel);
 
         allPackagesInstalled = true;
 
@@ -78,6 +79,13 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
         {
             DrawPackageGUI(package);
             if (!package.InstalledPackages) allPackagesInstalled = false;
+        }
+
+        EditorGUILayout.Space(25f);
+        GUILayout.Label("Demo Resouces", EditorStyles.boldLabel);
+        foreach (var resourcepackage in packageData.ResourcesPackages)
+        {
+            DrawPackageGUI(resourcepackage);
         }
 
         DrawDefineSymbolsGUI();
@@ -196,8 +204,51 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
     {
         Debug.Log($"{package.Name} Uninstallation...");
         RemoveSymbols();
-        removeRequest = Client.Remove(package.Name);
+
+        // Check if the package is embedded
+        string packagePath = Path.Combine(Application.dataPath, "..", "Packages", package.Name);
+        bool isEmbedded = Directory.Exists(packagePath);
+
+        if (isEmbedded)
+        {
+            if (EditorUtility.DisplayDialog("Remove Embedded Package",
+                $"The package '{package.Name}' is embedded. Removing it will delete the package folder and update the manifest. This action cannot be undone. Are you sure you want to proceed?",
+                "Yes", "No"))
+            {
+                RemoveEmbeddedPackage(package.Name);
+            }
+        }
+        else
+        {
+            removeRequest = Client.Remove(package.Name);
+            EditorApplication.update += RemoveProgress;
+
+        }
+    }
+
+    static void RemoveEmbeddedPackage(string packageName)
+    {
+        removeRequest = Client.Remove(packageName);
         EditorApplication.update += RemoveProgress;
+
+        string packagePath = Path.Combine(Application.dataPath, "..", "Packages", packageName);
+        Debug.Log("packagePath" + packagePath);
+        string manifestPath = Path.Combine(Application.dataPath, "..", "Packages", "manifest.json");
+        Debug.Log("manifest" + manifestPath);
+
+        try
+        {
+            // Delete the package folder
+            if (Directory.Exists(packagePath))
+            {
+                Directory.Delete(packagePath, true);
+            }
+            Debug.Log($"Successfully removed embedded package: {packageName}");
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Error removing embedded package {packageName}: {e.Message}");
+        }
     }
 
     static void RemoveProgress()
@@ -213,6 +264,8 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
             {
                 Debug.LogError($"Error removing package: {removeRequest.Error.message}");
             }
+
+            AssetDatabase.Refresh();
 
             EditorApplication.update -= RemoveProgress;
         }
@@ -249,6 +302,10 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
         {
             package.InstalledPackages = packageData.PackagesNames.Any(p => p.Contains(package.Name));
         }
+        foreach (var package in packageData.ResourcesPackages)
+        {
+            package.InstalledPackages = packageData.PackagesNames.Any(p => p.Contains(package.Name));
+        }
     }
 
     static void AddSymbols()
@@ -279,5 +336,12 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
         Debug.Log($"Removed scripting define symbol: {packageData.PackageListDefineSymbols}");
 
         packageData.AddedSymbols = false;
+    }
+
+
+    [System.Serializable]
+    private class ManifestJson
+    {
+        public Dictionary<string, string> dependencies = new Dictionary<string, string>();
     }
 }
