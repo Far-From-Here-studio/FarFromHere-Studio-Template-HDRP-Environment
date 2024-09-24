@@ -21,9 +21,12 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
     private static RemoveRequest removeRequest;
     private static EmbedRequest embedRequest;
 
+    private float progressValue = 0;
+
     [MenuItem("FarFromHereStudio/Packages Installer/HDRP: Template Environment")]
     public static void Init()
     {
+        ListPackages();
         var window = GetWindow<FFHStudioHDRPTemplateDemoResourcesImporterEditor>();
         window.titleContent = new GUIContent("FFH Package Installer");
         window.Show();
@@ -82,12 +85,20 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
         }
 
         EditorGUILayout.Space(25f);
-        GUILayout.Label("Demo Resouces", EditorStyles.boldLabel);
+        GUILayout.Label("Resouces", EditorStyles.boldLabel);
         foreach (var resourcepackage in packageData.ResourcesPackages)
         {
             DrawPackageGUI(resourcepackage);
         }
 
+
+        EditorGUILayout.Space(25f);
+        if (addRequest == null) progressValue = 0;
+        if (addRequest != null)
+        {
+            progressValue += Time.deltaTime;
+            EditorGUI.ProgressBar(new Rect(3, position.height - 50, position.width - 6, 25), progressValue / 50, "Installation Progress");
+        }
         DrawDefineSymbolsGUI();
 
         GUILayout.FlexibleSpace();
@@ -102,7 +113,6 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
 
         GUILayout.FlexibleSpace();
         EditorGUI.BeginDisabledGroup(true);
-        //EditorGUILayout.TextField(package.FolderGroupLabel);
         EditorGUILayout.Toggle("Installed", package.InstalledPackages);
         EditorGUI.EndDisabledGroup();
         EditorGUILayout.EndHorizontal();
@@ -195,7 +205,6 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
             {
                 Debug.LogError($"Error adding package: {addRequest.Error.message}");
             }
-
             EditorApplication.update -= AddProgress;
         }
     }
@@ -203,6 +212,7 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
     static void RemovePackage(PackageActive package)
     {
         Debug.Log($"{package.Name} Uninstallation...");
+
         RemoveSymbols();
 
         // Check if the package is embedded
@@ -265,8 +275,8 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
                 Debug.LogError($"Error removing package: {removeRequest.Error.message}");
             }
 
-            AssetDatabase.Refresh();
 
+            AssetDatabase.Refresh();
             EditorApplication.update -= RemoveProgress;
         }
     }
@@ -291,7 +301,6 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
             {
                 Debug.LogError($"Error embedding package: {embedRequest.Error.message}");
             }
-
             EditorApplication.update -= EmbedProgress;
         }
     }
@@ -310,6 +319,8 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
 
     static void AddSymbols()
     {
+        if (string.IsNullOrEmpty(packageData.PackageListDefineSymbols)) return;
+
         var buildTargetGroup = EditorUserBuildSettings.selectedBuildTargetGroup;
         var existingSymbols = PlayerSettings.GetScriptingDefineSymbols(NamedBuildTarget.FromBuildTargetGroup(buildTargetGroup));
 
@@ -325,6 +336,8 @@ public class FFHStudioHDRPTemplateDemoResourcesImporterEditor : EditorWindow
 
     static void RemoveSymbols()
     {
+        if (string.IsNullOrEmpty(packageData.PackageListDefineSymbols)) return;
+
         var buildTargetGroup = EditorUserBuildSettings.selectedBuildTargetGroup;
         var existingSymbols = PlayerSettings.GetScriptingDefineSymbols(NamedBuildTarget.FromBuildTargetGroup(buildTargetGroup));
 
