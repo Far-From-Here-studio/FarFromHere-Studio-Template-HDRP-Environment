@@ -187,20 +187,6 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "37332991c154440cb86342f0cd4c0f40"
-                },
-                "m_SlotId": 1
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "1df3da44b3af45a0aad0e5ef3bc2cdbb"
-                },
-                "m_SlotId": 5
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
                     "m_Id": "3e42b3bab93f4243a95b20393a3a7a3e"
                 },
                 "m_SlotId": 2
@@ -862,9 +848,6 @@
         },
         {
             "m_Id": "959dc6ff507841e99e1dc8ad27602c27"
-        },
-        {
-            "m_Id": "56b64431a3f44f599b02b4cfcc90ebf8"
         }
     ],
     "synonyms": [],
@@ -1595,21 +1578,6 @@
         "z": 0.0,
         "w": 0.0
     }
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
-    "m_ObjectId": "56b64431a3f44f599b02b4cfcc90ebf8",
-    "m_Id": 5,
-    "m_DisplayName": "out_volumefade",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "out_volumefade",
-    "m_StageCapability": 3,
-    "m_Value": 0.0,
-    "m_DefaultValue": 0.0,
-    "m_Labels": []
 }
 
 {
