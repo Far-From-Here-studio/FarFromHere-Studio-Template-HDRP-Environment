@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.farfromhere.hdrp-template-demo-resources": "https://github.com/Far-From-Here-studio/com.farfromhere.hdrp-template-demo-resources.git",
     "com.unity.cinemachine": "3.1.0",
     "com.unity.collab-proxy": "2.4.4",
     "com.unity.entities.graphics": "1.2.4",
