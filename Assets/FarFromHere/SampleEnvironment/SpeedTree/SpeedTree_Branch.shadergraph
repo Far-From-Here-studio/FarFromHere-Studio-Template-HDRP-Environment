@@ -1858,7 +1858,7 @@
     "m_Title": "Normals",
     "m_Position": {
         "x": -2886.0,
-        "y": 302.0000305175781
+        "y": 302.0001525878906
     }
 }
 
@@ -2260,7 +2260,7 @@
     "m_StageCapability": 3,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -3001,7 +3001,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -3276,7 +3276,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -4943,8 +4943,8 @@
     "m_ObjectId": "44c44bd9998f4636a5f80a1c44b97fae",
     "m_Title": "Billboard",
     "m_Position": {
-        "x": -1676.9998779296875,
-        "y": 339.00018310546877
+        "x": -1661.0,
+        "y": 311.0000305175781
     }
 }
 
@@ -6425,7 +6425,7 @@
     "m_StageCapability": 2,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -6545,7 +6545,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -7552,7 +7552,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -8863,8 +8863,8 @@
     "m_ObjectId": "a83d13cea54846cd9546a7b8a38bc77b",
     "m_Title": "Subsurface",
     "m_Position": {
-        "x": -1555.000244140625,
-        "y": 1086.0001220703125
+        "x": -1555.0,
+        "y": 1085.999755859375
     }
 }
 
@@ -9201,7 +9201,7 @@
     "m_StageCapability": 2,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -9613,8 +9613,8 @@
     "m_ObjectId": "b6fa1dd6439d4637857c11b7f865748a",
     "m_Title": "Misc contains:  Smoothness(R) Metallic (G) Ambient Occlusion (B)",
     "m_Position": {
-        "x": -1449.000244140625,
-        "y": 660.0
+        "x": -1449.0,
+        "y": 659.9998779296875
     }
 }
 
@@ -10688,8 +10688,8 @@
     "m_ObjectId": "cfc7b0ec1f5944eaab9fa2743fa71368",
     "m_Title": "Sphere AO",
     "m_Position": {
-        "x": -972.0001831054688,
-        "y": 1512.0
+        "x": -972.0,
+        "y": 1511.9998779296875
     }
 }
 
@@ -12565,7 +12565,7 @@
     "m_StageCapability": 3,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0

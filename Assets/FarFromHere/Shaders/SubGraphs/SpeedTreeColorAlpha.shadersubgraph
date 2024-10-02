@@ -2581,8 +2581,8 @@
     "m_ObjectId": "3e57f19dc1b341daa43cdb706ff8a1a4",
     "m_Title": "Preserve Vibrance After Hue Variation",
     "m_Position": {
-        "x": 237.33328247070313,
-        "y": -651.3333740234375
+        "x": 236.999755859375,
+        "y": -651.0
     }
 }
 
@@ -3197,7 +3197,7 @@
     "m_StageCapability": 3,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -3733,7 +3733,7 @@
     "m_StageCapability": 3,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -4602,8 +4602,8 @@
     "m_ObjectId": "92a39f15d9f94cc3a9b3106683f6efde",
     "m_Title": "Seam Blending",
     "m_Position": {
-        "x": -340.79998779296877,
-        "y": 241.60003662109376
+        "x": -263.9998779296875,
+        "y": 243.00006103515626
     }
 }
 
@@ -4924,8 +4924,8 @@
     "m_ObjectId": "a848c55589cf47e09e1cfeec0b4e1755",
     "m_Title": "Apply Hue Variation",
     "m_Position": {
-        "x": -743.9999389648438,
-        "y": -666.0001220703125
+        "x": -743.9998779296875,
+        "y": -532.0000610351563
     }
 }
 
@@ -5410,7 +5410,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -6244,8 +6244,8 @@
     "m_ObjectId": "dfba95cb2e7342f6b4fe4110510e2fc7",
     "m_Title": "\"Random\" hue variation amount per instance",
     "m_Position": {
-        "x": -1280.0,
-        "y": -305.333251953125
+        "x": -1174.0,
+        "y": -303.0
     }
 }
 
@@ -6742,8 +6742,8 @@
     "m_ObjectId": "f07f0daa32094d54adb865830b9f3a3f",
     "m_Title": "Crossfade",
     "m_Position": {
-        "x": 376.0,
-        "y": 229.333251953125
+        "x": 386.999755859375,
+        "y": 251.99993896484376
     }
 }
 
