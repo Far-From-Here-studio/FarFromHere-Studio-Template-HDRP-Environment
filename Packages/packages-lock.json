@@ -33,7 +33,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.cinemachine": {
-      "version": "3.1.0",
+      "version": "3.1.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -42,7 +42,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.collab-proxy": {
-      "version": "2.4.4",
+      "version": "2.5.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
@@ -177,7 +177,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.probuilder": {
-      "version": "6.0.3",
+      "version": "6.0.4",
       "depth": 0,
       "source": "registry",
       "dependencies": {
