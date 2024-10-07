@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEditor.PackageManager.Requests;
 using UnityEngine;
@@ -6,10 +5,10 @@ using UnityEngine;
 namespace FFH.PackageManager
 {
     [InitializeOnLoad]
-    public class FFHStudioHDRPTemplatePackagesImporterEditor : FFHPackageImporterWindow
+    public class DigitalHumanPackageImporter : FFHPackageImporterWindow
     {
-        private const string PACKAGE_DATA_NAME = "FFH_Template_HDRP_Demo_Resources";
-        public static FFHStudioHDRPTemplatePackagesImporterEditor window;
+        private const string PACKAGE_DATA_NAME = "DigitalHumanPackageData";
+        public static DigitalHumanPackageImporter window;
 
         protected override void OnEnable()
         {
@@ -17,36 +16,15 @@ namespace FFH.PackageManager
             if(!packageData) InitializePackageData(PACKAGE_DATA_NAME);
         }
 
-        [MenuItem("FarFromHereStudio/Packages Installer/HDRP: Template Environment")]
+
+        [MenuItem("FarFromHereStudio/Packages Installer/Digital Human")]
         public static void Init()
         {
             //LoadAndInitializePackageData();
-            if (!window) window = GetWindow<FFHStudioHDRPTemplatePackagesImporterEditor>();
-            window.titleContent = new GUIContent("FFH HDRP Template Package Installer");
+            window = GetWindow<DigitalHumanPackageImporter>();
+            window.titleContent = new GUIContent("Digital Human Packages Installer");
             window.Show();
         }
-
-        static FFHStudioHDRPTemplatePackagesImporterEditor()
-        {
-            EditorApplication.update += InitializeOnEditorStartup;
-        }
-
-        static void InitializeOnEditorStartup()
-        {
-            // Ensure window instance is available
-            if(!window)window = GetWindow<FFHStudioHDRPTemplatePackagesImporterEditor>();
-
-            // Initialize package data with a proper instance reference
-            if (window != null)
-            {
-                window.InitializePackageData(PACKAGE_DATA_NAME); // Now this works because we have an instance
-            }
-
-            // Unsubscribe after the initialization to avoid redundant calls
-            EditorApplication.update -= InitializeOnEditorStartup;
-        }
-
-
 
         void OnGUI()
         {

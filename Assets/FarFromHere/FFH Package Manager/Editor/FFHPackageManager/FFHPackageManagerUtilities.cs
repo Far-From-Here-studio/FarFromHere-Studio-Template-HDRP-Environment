@@ -13,20 +13,21 @@ namespace FFH.PackageManager
     public class FFHPackageManagerUtilities
     {
 
-        public static AddRequest addRequest;
-        public static EmbedRequest embedRequest;
-        public static ListRequest listRequest;
-        public static RemoveRequest removeRequest;
+        public AddRequest addRequest;
+        public EmbedRequest embedRequest;
+        public ListRequest listRequest;
+        public RemoveRequest removeRequest;
 
-        private static FFHPackagesData _packageData;
+        private FFHPackagesData _packageData;
 
-        public static void Initialize(FFHPackagesData packageData)
+        public void Initialize(FFHPackagesData packageData)
         {
             _packageData = packageData;
         }
 
         public static FFHPackagesData LoadPackageData(string packageDataName)
         {
+            // This can remain static as it's just a utility method
             string[] assetPaths = AssetDatabase.FindAssets(packageDataName);
             if (assetPaths.Length > 0)
             {
@@ -42,7 +43,8 @@ namespace FFH.PackageManager
             return null;
         }
 
-        public static void DrawPackageGUI(PackageActive package, FFHPackagesData packageData)
+
+        public void DrawPackageGUI( PackageActive package, FFHPackagesData packageData)
         {
             EditorGUILayout.Space();
             EditorGUILayout.BeginHorizontal();
@@ -53,7 +55,7 @@ namespace FFH.PackageManager
             EditorGUI.EndDisabledGroup();
             EditorGUILayout.EndHorizontal();
 
-            if (package.GUIState && listRequest == null)
+            if (package.GUIState)
             {
                 EditorGUILayout.BeginHorizontal();
 
@@ -97,7 +99,7 @@ namespace FFH.PackageManager
             }
         }
 
-        public static void ListPackages()
+        public void ListPackages()
         {
             if (_packageData == null)
             {
@@ -108,7 +110,8 @@ namespace FFH.PackageManager
             listRequest = Client.List(false, true);
             EditorApplication.update += ListProgress;
         }
-        static void ListProgress()
+
+        private void ListProgress()
         {
             if (listRequest.IsCompleted)
             {
@@ -126,7 +129,7 @@ namespace FFH.PackageManager
             }
         }
 
-        static void AddPackage(PackageActive package)
+        public void AddPackage(PackageActive package)
         {
             if (addRequest != null)
             {
@@ -137,7 +140,7 @@ namespace FFH.PackageManager
             EditorApplication.update += AddProgress;
         }
 
-        static void AddProgress()
+        void AddProgress()
         {
             if (addRequest.IsCompleted)
             {
@@ -162,7 +165,7 @@ namespace FFH.PackageManager
             }
         }
 
-        static void RemovePackage(FFHPackagesData packageData, PackageActive package)
+        public void RemovePackage(FFHPackagesData packageData, PackageActive package)
         {
             Debug.Log($"{package.Name} Uninstallation...");
 
@@ -192,7 +195,7 @@ namespace FFH.PackageManager
             }
         }
 
-        static void RemoveEmbeddedPackage(PackageActive package)
+        public void RemoveEmbeddedPackage(PackageActive package)
         {
             removeRequest = Client.Remove(package.Name);
             EditorApplication.update += RemoveProgress;
@@ -222,7 +225,7 @@ namespace FFH.PackageManager
             }
         }
 
-        static void RemoveProgress()
+         void RemoveProgress()
         {
             if (removeRequest.IsCompleted)
             {
@@ -239,7 +242,7 @@ namespace FFH.PackageManager
             }
         }
 
-        static void EmbedPackage(PackageActive package)
+        public void EmbedPackage(PackageActive package)
         {
             Debug.Log($"{package.Name} Embedding...");
             embedRequest = Client.Embed(package.Name);
@@ -247,7 +250,7 @@ namespace FFH.PackageManager
             EditorApplication.update += EmbedProgress;
         }
 
-        static void EmbedProgress()
+         void EmbedProgress()
         {
             if (embedRequest.IsCompleted)
             {
@@ -315,6 +318,8 @@ namespace FFH.PackageManager
 
             packageData.AddedSymbols = false;
         }
+
+
 
     }
 }
