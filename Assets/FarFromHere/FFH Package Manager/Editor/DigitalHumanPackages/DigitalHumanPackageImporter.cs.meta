@@ -1,9 +1,11 @@
 fileFormatVersion: 2
-guid: f688a0808c246f347a45024acf2f52bc
+guid: dacd05c15ae64694baed387de2796952
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - m_ViewDataDictionary: {instanceID: 0}
+  - packageData: {fileID: 11400000, guid: c2b649f7001f8fb48a600416e0e4123e, type: 2}
   executionOrder: 0
   icon: {fileID: 2800000, guid: 1c23823aeff990742840fed6d461615a, type: 3}
   userData: 

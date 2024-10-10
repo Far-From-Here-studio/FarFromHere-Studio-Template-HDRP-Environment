@@ -1,19 +1,21 @@
 using UnityEditor;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 
 namespace FFH.PackageManager
 {
     [InitializeOnLoad]
-    class FFHStudioHDRPTemplatePackagesImporterEditor : FFHPackageImporterWindow
+    class DigitalHumanPackageImporter : FFHPackageImporterWindow
     {
-        private const string PACKAGE_DATA_NAME = "FFH_Template_HDRP_Demo_Resources";
+        private const string PACKAGE_DATA_NAME = "DigitalHumanPackageData";
 
-        [MenuItem("FarFromHereStudio/Packages Installer/Template HDRP Environment")]
+        [MenuItem("FarFromHereStudio/Packages Installer/Digital Human")]
         protected static void Init()
         {
-            var window = CreateInstance<FFHStudioHDRPTemplatePackagesImporterEditor>();
+            var window = CreateInstance<DigitalHumanPackageImporter>();
+            // Sets instance-specific packageData
             window.InitializePackageData(PACKAGE_DATA_NAME);
-            window.titleContent = new GUIContent("Template Packages Installer");
+            window.titleContent = new GUIContent("Digital Human Packages Installer");
             window.Show();
         }
         public void OnEnable()
@@ -36,24 +38,16 @@ namespace FFH.PackageManager
 
                     if (!package.InstalledPackages) allPackagesInstalled = false;
                 }
-
                 EditorGUILayout.Space(25f);
                 GUILayout.Label("Project's Resouces Packages", EditorStyles.boldLabel);
-
                 foreach (var resourcepackage in packageData.ResourcesPackages)
                 {
                     DrawPackageGUI(resourcepackage);
                 }
-
                 EditorGUILayout.Space(25f);
 
                 DrawDefineSymbolsGUI();
-
-                //GUILayout.FlexibleSpace();
-                //window.packageData.ShowAtStart = EditorGUILayout.Toggle("Show On Startup", window.packageData.ShowAtStart);
             }
-
-
         }
     }
 }
