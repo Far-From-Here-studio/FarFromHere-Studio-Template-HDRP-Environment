@@ -1,108 +1,59 @@
-using System.Runtime.CompilerServices;
 using UnityEditor;
-using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 
 namespace FFH.PackageManager
 {
     [InitializeOnLoad]
-    public class FFHStudioHDRPTemplatePackagesImporterEditor : FFHPackageImporterWindow
+    class FFHStudioHDRPTemplatePackagesImporterEditor : FFHPackageImporterWindow
     {
         private const string PACKAGE_DATA_NAME = "FFH_Template_HDRP_Demo_Resources";
-        public static FFHStudioHDRPTemplatePackagesImporterEditor window;
 
-        protected override void OnEnable()
+        [MenuItem("FarFromHereStudio/Packages Installer/Template HDRP Environment")]
+        protected static void Init()
         {
-            base.OnEnable();
-            if(!packageData) InitializePackageData(PACKAGE_DATA_NAME);
-        }
-
-        [MenuItem("FarFromHereStudio/Packages Installer/HDRP: Template Environment")]
-        public static void Init()
-        {
-            //LoadAndInitializePackageData();
-            if (!window) window = GetWindow<FFHStudioHDRPTemplatePackagesImporterEditor>();
-            window.titleContent = new GUIContent("FFH HDRP Template Package Installer");
+            var window = CreateInstance<FFHStudioHDRPTemplatePackagesImporterEditor>();
+            window.InitializePackageData(PACKAGE_DATA_NAME);
+            window.titleContent = new GUIContent("Template Packages Installer");
             window.Show();
         }
-
-        static FFHStudioHDRPTemplatePackagesImporterEditor()
+        public void OnEnable()
         {
-            EditorApplication.update += InitializeOnEditorStartup;
+            if (listRequest == null) ListPackages();
         }
-
-        static void InitializeOnEditorStartup()
+        protected void OnGUI()
         {
-            // Ensure window instance is available
-            if(!window)window = GetWindow<FFHStudioHDRPTemplatePackagesImporterEditor>();
+            if (listRequest != null) GUILayout.Label("Listing Packages...", EditorStyles.boldLabel);
 
-            // Initialize package data with a proper instance reference
-            if (window != null)
+            if (PackagesNames != null) CheckAllPackages();
+            if (PackagesNames != null && packageData != null && listRequest == null)
             {
-                window.InitializePackageData(PACKAGE_DATA_NAME); // Now this works because we have an instance
-            }
+                allPackagesInstalled = true;
+                GUILayout.Label("Project's Core Packages", EditorStyles.boldLabel);
 
-            // Unsubscribe after the initialization to avoid redundant calls
-            EditorApplication.update -= InitializeOnEditorStartup;
-        }
-
-
-
-        void OnGUI()
-        {
-            if (packageData == null)
-            {
-                EditorGUILayout.HelpBox("Package data not loaded. Please check the console for errors.", MessageType.Error);
-                return;
-            }
-
-            allPackagesInstalled = true;
-            GUILayout.Label("Project's Core Packages", EditorStyles.boldLabel);
-
-            foreach (var package in packageData.Packages)
-            {
-                packageManagerUtilities.DrawPackageGUI( package, packageData);
-                
-                if (!package.InstalledPackages) allPackagesInstalled = false;
-            }
-
-            EditorGUILayout.Space(25f);
-            GUILayout.Label("Project's Resouces Packages", EditorStyles.boldLabel);
-            foreach (var resourcepackage in packageData.ResourcesPackages)
-            {
-                packageManagerUtilities.DrawPackageGUI(resourcepackage, packageData);
-            }
-
-            EditorGUILayout.Space(25f);
-            if (packageManagerUtilities.addRequest == null) progressValue = 0;
-            if (packageManagerUtilities.addRequest != null)
-            {
-                progressValue += Time.deltaTime;
-                EditorGUI.ProgressBar(new Rect(3, position.height - 50, position.width - 6, 25), progressValue / 50, "Installation Progress");
-            }
-            FFHPackageManagerUtilities.DrawDefineSymbolsGUI(packageData, allPackagesInstalled);
-
-            GUILayout.FlexibleSpace();
-            packageData.ShowAtStart = EditorGUILayout.Toggle("Show On Startup", packageData.ShowAtStart);
-        }
-
-        /*
-        private static void LoadAndInitializePackageData()
-        {
-            if (packageData == null)
-            {
-                packageData = FFHPackageManagerUtilities.LoadPackageData(PACKAGE_DATA_NAME);
-                if (packageData != null)
+                foreach (var package in packageData.Packages)
                 {
-                    FFHPackageManagerUtilities.Initialize(packageData);
-                    FFHPackageManagerUtilities.ListPackages();
+                    DrawPackageGUI(package);
+
+                    if (!package.InstalledPackages) allPackagesInstalled = false;
                 }
-                else
+
+                EditorGUILayout.Space(25f);
+                GUILayout.Label("Project's Resouces Packages", EditorStyles.boldLabel);
+
+                foreach (var resourcepackage in packageData.ResourcesPackages)
                 {
-                    Debug.LogError($"Failed to load package data: {PACKAGE_DATA_NAME}");
+                    DrawPackageGUI(resourcepackage);
                 }
+
+                EditorGUILayout.Space(25f);
+
+                DrawDefineSymbolsGUI();
+
+                //GUILayout.FlexibleSpace();
+                //window.packageData.ShowAtStart = EditorGUILayout.Toggle("Show On Startup", window.packageData.ShowAtStart);
             }
+
+
         }
-        */
     }
 }

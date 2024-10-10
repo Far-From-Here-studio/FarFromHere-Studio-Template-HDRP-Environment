@@ -7,8 +7,6 @@ namespace FFH.PackageManager
     public class PackageActive
     {
         public bool InstalledPackages { get; set; }
-
-
         public string Name;
         public string Address;
         public string FolderGroupLabel;
@@ -29,6 +27,6 @@ namespace FFH.PackageManager
         public PackageActive[] Packages;
 
         public PackageActive[] ResourcesPackages;
-        public List<string> PackagesNames { get; set; } = new List<string>();
+
     }
 }

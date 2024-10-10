@@ -5,82 +5,49 @@ using UnityEngine;
 namespace FFH.PackageManager
 {
     [InitializeOnLoad]
-    public class DigitalHumanPackageImporter : FFHPackageImporterWindow
+    class DigitalHumanPackageImporter : FFHPackageImporterWindow
     {
         private const string PACKAGE_DATA_NAME = "DigitalHumanPackageData";
-        public static DigitalHumanPackageImporter window;
-
-        protected override void OnEnable()
-        {
-            base.OnEnable();
-            if(!packageData) InitializePackageData(PACKAGE_DATA_NAME);
-        }
-
 
         [MenuItem("FarFromHereStudio/Packages Installer/Digital Human")]
-        public static void Init()
+        protected static void Init()
         {
-            //LoadAndInitializePackageData();
-            window = GetWindow<DigitalHumanPackageImporter>();
+            var window = CreateInstance<DigitalHumanPackageImporter>();
+            // Sets instance-specific packageData
+            window.InitializePackageData(PACKAGE_DATA_NAME);
             window.titleContent = new GUIContent("Digital Human Packages Installer");
             window.Show();
         }
-
-        void OnGUI()
+        public void OnEnable()
         {
-            if (packageData == null)
-            {
-                EditorGUILayout.HelpBox("Package data not loaded. Please check the console for errors.", MessageType.Error);
-                return;
-            }
-
-            allPackagesInstalled = true;
-            GUILayout.Label("Project's Core Packages", EditorStyles.boldLabel);
-
-            foreach (var package in packageData.Packages)
-            {
-                packageManagerUtilities.DrawPackageGUI( package, packageData);
-                
-                if (!package.InstalledPackages) allPackagesInstalled = false;
-            }
-
-            EditorGUILayout.Space(25f);
-            GUILayout.Label("Project's Resouces Packages", EditorStyles.boldLabel);
-            foreach (var resourcepackage in packageData.ResourcesPackages)
-            {
-                packageManagerUtilities.DrawPackageGUI(resourcepackage, packageData);
-            }
-
-            EditorGUILayout.Space(25f);
-            if (packageManagerUtilities.addRequest == null) progressValue = 0;
-            if (packageManagerUtilities.addRequest != null)
-            {
-                progressValue += Time.deltaTime;
-                EditorGUI.ProgressBar(new Rect(3, position.height - 50, position.width - 6, 25), progressValue / 50, "Installation Progress");
-            }
-            FFHPackageManagerUtilities.DrawDefineSymbolsGUI(packageData, allPackagesInstalled);
-
-            GUILayout.FlexibleSpace();
-            packageData.ShowAtStart = EditorGUILayout.Toggle("Show On Startup", packageData.ShowAtStart);
+            if (listRequest == null) ListPackages();
         }
-
-        /*
-        private static void LoadAndInitializePackageData()
+        protected void OnGUI()
         {
-            if (packageData == null)
+            if (listRequest != null) GUILayout.Label("Listing Packages...", EditorStyles.boldLabel);
+
+            if (PackagesNames != null) CheckAllPackages();
+            if (PackagesNames != null && packageData != null && listRequest == null)
             {
-                packageData = FFHPackageManagerUtilities.LoadPackageData(PACKAGE_DATA_NAME);
-                if (packageData != null)
+                allPackagesInstalled = true;
+                GUILayout.Label("Project's Core Packages", EditorStyles.boldLabel);
+
+                foreach (var package in packageData.Packages)
                 {
-                    FFHPackageManagerUtilities.Initialize(packageData);
-                    FFHPackageManagerUtilities.ListPackages();
+                    DrawPackageGUI(package);
+
+                    if (!package.InstalledPackages) allPackagesInstalled = false;
                 }
-                else
+                EditorGUILayout.Space(25f);
+                GUILayout.Label("Project's Resouces Packages", EditorStyles.boldLabel);
+                foreach (var resourcepackage in packageData.ResourcesPackages)
                 {
-                    Debug.LogError($"Failed to load package data: {PACKAGE_DATA_NAME}");
+                    DrawPackageGUI(resourcepackage);
                 }
+                EditorGUILayout.Space(25f);
+
+                DrawDefineSymbolsGUI();
             }
         }
-        */
     }
 }
