@@ -14,6 +14,7 @@ namespace FFH.PackageManager
         protected bool allPackagesInstalled;
         protected float progressValue = 0;
         protected FFHPackagesData packageData;
+        protected bool IsListing;
 
         public static ListRequest listRequest;
 

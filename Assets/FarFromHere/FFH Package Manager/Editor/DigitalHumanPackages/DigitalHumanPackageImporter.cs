@@ -1,17 +1,18 @@
 using UnityEditor;
 using UnityEditor.PackageManager.UI;
 using UnityEngine;
+using static Codice.Client.BaseCommands.Import.Commit;
 
 namespace FFH.PackageManager
 {
     [InitializeOnLoad]
-     public class DigitalHumanPackageImporter : FFHPackageImporterWindow
+    public class DigitalHumanPackageImporter : FFHPackageImporterWindow
     {
         private const string PACKAGE_DATA_NAME = "DigitalHumanPackageData";
         private const string SESSION_STATE_KEY = "DigitalHuman_ShowAtStart";
         static DigitalHumanPackageImporter FFHPackageImporterWindow;
         static FFHPackagesData data;
-
+        private bool Listed;
         static DigitalHumanPackageImporter()
         {
             EditorApplication.delayCall += DelayedStart;
@@ -20,7 +21,7 @@ namespace FFH.PackageManager
         {
             var isAlreadyShown = SessionState.GetBool(SESSION_STATE_KEY, false);
 
-            if(!data)
+            if (!data)
             {
                 data = LoadPackageData(PACKAGE_DATA_NAME);
             }
@@ -37,10 +38,29 @@ namespace FFH.PackageManager
         [MenuItem("FarFromHereStudio/Packages Installer/Digital Human")]
         protected static void Init()
         {
-            FFHPackageImporterWindow = GetWindow<DigitalHumanPackageImporter>();         
-            FFHPackageImporterWindow.Show();           
+            FFHPackageImporterWindow = GetWindow<DigitalHumanPackageImporter>();
+            FFHPackageImporterWindow.Show();
         }
 
+        protected void OnInspectorUpdate()
+        {
+
+            if (listRequest != null)
+            {
+                IsListing = true;
+                Listed = IsListing;
+            }
+            else
+            {
+                IsListing = false;
+                if (Listed != IsListing)
+                {
+                    if (PackagesNames != null && packageData != null) CheckAllPackages();
+                    Repaint();
+                    Listed = IsListing;
+                }
+            }
+        }
         private void OnEnable()
         {
             if (listRequest == null) ListPackages();
@@ -48,7 +68,7 @@ namespace FFH.PackageManager
         }
         protected void OnGUI()
         {
-            if (listRequest != null)
+            if (IsListing)
             {
                 GUILayout.Label("Listing Packages...", EditorStyles.boldLabel);
             }

@@ -11,7 +11,7 @@ namespace FFH.PackageManager
         static FFHStudioHDRPTemplatePackagesImporter FFHPackageImporterWindow;
         private const string SESSION_STATE_KEY = "FFH_Template_HDRP_ShowAtStart";
         static FFHPackagesData data;
-
+        private bool Listed; 
         static FFHStudioHDRPTemplatePackagesImporter()
         {
             EditorApplication.delayCall += DelayedStart;
@@ -39,6 +39,25 @@ namespace FFH.PackageManager
             FFHPackageImporterWindow.Show();
 
         }
+        protected void OnInspectorUpdate()
+        {
+
+            if (listRequest != null)
+            {
+                IsListing = true;
+                Listed = IsListing;
+            }
+            else
+            {
+                IsListing = false;
+                if (Listed != IsListing)
+                {
+                    if (PackagesNames != null && packageData != null) CheckAllPackages();
+                    Repaint();
+                    Listed = IsListing;
+                }
+            }
+        }
         private void OnEnable()
         {
             if (listRequest == null) ListPackages();
@@ -48,7 +67,7 @@ namespace FFH.PackageManager
 
         protected void OnGUI()
         {
-            if (listRequest != null)
+            if (IsListing)
             {
                 GUILayout.Label("Listing Packages...", EditorStyles.boldLabel);
             }
