@@ -1,7 +1,6 @@
 using UnityEditor;
 using UnityEditor.PackageManager.UI;
 using UnityEngine;
-using static Codice.Client.BaseCommands.Import.Commit;
 
 namespace FFH.PackageManager
 {
