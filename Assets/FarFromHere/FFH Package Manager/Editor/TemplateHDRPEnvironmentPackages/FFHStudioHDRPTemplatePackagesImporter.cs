@@ -4,21 +4,21 @@ using UnityEngine;
 namespace FFH.PackageManager
 {
     [InitializeOnLoad]
-    public class DigitalHumanPackageImporter : FFHPackageImporterWindow
+     class FFHStudioHDRPTemplatePackagesImporter : FFHPackageImporterWindow
     {
-        private const string PACKAGE_DATA_NAME = "DigitalHumanPackageData";
-        private const string SESSION_STATE_KEY = "DigitalHuman_ShowAtStart";
-        static DigitalHumanPackageImporter FFHPackageImporterWindow;
+
+        private const string PACKAGE_DATA_NAME = "FFH_Template_HDRP_Demo_Resources";
+        static FFHStudioHDRPTemplatePackagesImporter FFHPackageImporterWindow;
+        private const string SESSION_STATE_KEY = "FFH_Template_HDRP_ShowAtStart";
         static FFHPackagesData data;
-        private bool Listed;
-        static DigitalHumanPackageImporter()
+        private bool Listed; 
+        static FFHStudioHDRPTemplatePackagesImporter()
         {
             EditorApplication.delayCall += DelayedStart;
         }
         static void DelayedStart()
         {
             var isAlreadyShown = SessionState.GetBool(SESSION_STATE_KEY, false);
-
             if (!data)
             {
                 data = LoadPackageData(PACKAGE_DATA_NAME);
@@ -32,14 +32,13 @@ namespace FFH.PackageManager
             }
         }
 
-
-        [MenuItem("FarFromHereStudio/Packages Installer/Digital Human")]
+        [MenuItem("FarFromHereStudio/Packages Installer/Template HDRP Environment")]
         protected static void Init()
         {
-            FFHPackageImporterWindow = GetWindow<DigitalHumanPackageImporter>();
+            FFHPackageImporterWindow = GetWindow<FFHStudioHDRPTemplatePackagesImporter>();
             FFHPackageImporterWindow.Show();
-        }
 
+        }
         protected void OnInspectorUpdate()
         {
 
@@ -63,7 +62,9 @@ namespace FFH.PackageManager
         {
             if (listRequest == null) ListPackages();
             if (packageData == null) InitializePackageData(PACKAGE_DATA_NAME);
+            if (PackagesNames != null && packageData != null) CheckAllPackages();
         }
+
         protected void OnGUI()
         {
             if (IsListing)
