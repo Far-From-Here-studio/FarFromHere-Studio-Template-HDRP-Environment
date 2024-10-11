@@ -9,21 +9,20 @@ using UnityEngine;
 
 namespace FFH.PackageManager
 {
-    class FFHPackageImporterWindow : EditorWindow
+    public abstract class FFHPackageImporterWindow : EditorWindow
     {
         protected bool allPackagesInstalled;
         protected float progressValue = 0;
         protected FFHPackagesData packageData;
 
         public static ListRequest listRequest;
-        // Instance-specific request tracking
+
         protected static AddRequest addRequest;
         protected static EmbedRequest embedRequest;
         protected static RemoveRequest removeRequest;
-
         public static List<string> PackagesNames { get; set; }
 
-        protected FFHPackagesData LoadPackageData(string packageDataName)
+        protected static FFHPackagesData LoadPackageData(string packageDataName)
         {
             // This can remain static as it's just a utility method
             string[] assetPaths = AssetDatabase.FindAssets(packageDataName);
@@ -45,6 +44,8 @@ namespace FFH.PackageManager
         {
             packageData = LoadPackageData(packageDataName);
         }
+
+        
         protected void DrawPackageGUI(PackageActive package)
         {
             EditorGUILayout.Space();
