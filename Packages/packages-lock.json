@@ -7,12 +7,6 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.farfromhere.hdrp-template-demo-resources": {
-      "version": "file:C:/Users/Kosmi/Documents/GitHub/com.farfromhere.hdrp-template-demo-resources",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {}
-    },
     "com.unity.asset-store-tools": {
       "version": "file:com.unity.asset-store-tools",
       "depth": 0,
