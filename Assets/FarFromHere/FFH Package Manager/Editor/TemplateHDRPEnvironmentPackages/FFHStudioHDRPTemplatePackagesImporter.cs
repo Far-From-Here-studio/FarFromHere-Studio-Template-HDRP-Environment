@@ -1,17 +1,18 @@
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
 namespace FFH.PackageManager
 {
     [InitializeOnLoad]
-     class FFHStudioHDRPTemplatePackagesImporter : FFHPackageImporterWindow
+    class FFHStudioHDRPTemplatePackagesImporter : FFHPackageImporterWindow
     {
 
         private const string PACKAGE_DATA_NAME = "FFH_Template_HDRP_Demo_Resources";
         static FFHStudioHDRPTemplatePackagesImporter FFHPackageImporterWindow;
         private const string SESSION_STATE_KEY = "FFH_Template_HDRP_ShowAtStart";
         static FFHPackagesData data;
-        private bool Listed; 
+        private bool Listed;
         static FFHStudioHDRPTemplatePackagesImporter()
         {
             EditorApplication.delayCall += DelayedStart;
@@ -77,7 +78,7 @@ namespace FFH.PackageManager
                 if (PackagesNames != null && packageData != null)
                 {
                     allPackagesInstalled = true;
-                    GUILayout.Label("Project's Core Packages", EditorStyles.boldLabel);
+                    GUILayout.Label("Core Packages", EditorStyles.boldLabel);
 
                     foreach (var package in packageData.Packages)
                     {
@@ -85,11 +86,15 @@ namespace FFH.PackageManager
 
                         if (!package.InstalledPackages) allPackagesInstalled = false;
                     }
-                    EditorGUILayout.Space(25f);
-                    GUILayout.Label("Project's Resouces Packages", EditorStyles.boldLabel);
-                    foreach (var resourcepackage in packageData.ResourcesPackages)
+
+                    if (packageData.ResourcesPackages.FirstOrDefault() != null)
                     {
-                        DrawPackageGUI(resourcepackage);
+                        EditorGUILayout.Space(25f);
+                        GUILayout.Label("Resouces Packages", EditorStyles.boldLabel);
+                        foreach (var resourcepackage in packageData.ResourcesPackages)
+                        {
+                            DrawPackageGUI(resourcepackage);
+                        }
                     }
                     EditorGUILayout.Space(25f);
 

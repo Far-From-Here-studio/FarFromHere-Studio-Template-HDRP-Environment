@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -76,7 +77,7 @@ namespace FFH.PackageManager
                 if (PackagesNames != null && packageData != null)
                 {
                     allPackagesInstalled = true;
-                    GUILayout.Label("Project's Core Packages", EditorStyles.boldLabel);
+                    GUILayout.Label(" Core Packages ", EditorStyles.boldLabel);
 
                     foreach (var package in packageData.Packages)
                     {
@@ -84,14 +85,18 @@ namespace FFH.PackageManager
 
                         if (!package.InstalledPackages) allPackagesInstalled = false;
                     }
-                    EditorGUILayout.Space(25f);
-                    GUILayout.Label("Project's Resouces Packages", EditorStyles.boldLabel);
-                    foreach (var resourcepackage in packageData.ResourcesPackages)
+                    
+
+                    if (packageData.ResourcesPackages.FirstOrDefault() != null)
                     {
-                        DrawPackageGUI(resourcepackage);
+                        EditorGUILayout.Space(25f);
+                        GUILayout.Label("Resouces Packages", EditorStyles.boldLabel);
+                        foreach (var resourcepackage in packageData.ResourcesPackages)
+                        {
+                            DrawPackageGUI(resourcepackage);
+                        }
                     }
                     EditorGUILayout.Space(25f);
-
                     DrawDefineSymbolsGUI();
 
                     GUILayout.FlexibleSpace();

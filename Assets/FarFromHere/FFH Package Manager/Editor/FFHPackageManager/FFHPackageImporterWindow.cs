@@ -106,6 +106,7 @@ namespace FFH.PackageManager
                 if (listRequest.Status == StatusCode.Success)
                 {
                     PackagesNames = listRequest.Result.Select(p => p.name).ToList();
+
                 }
                 else if (listRequest.Status >= StatusCode.Failure)
                 {
@@ -132,7 +133,7 @@ namespace FFH.PackageManager
                 if (addRequest.Status == StatusCode.Success)
                 {
                     Debug.Log($"Installed: {addRequest.Result.packageId}");
-                    Repaint();
+                    UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
                     if (packageData.ResourcesPackages.Any(p => p.Name == addRequest.Result.name))
                     {
                         Debug.Log("ResourcesPackage added. Reloading open scenes...");
@@ -183,7 +184,7 @@ namespace FFH.PackageManager
                 if (removeRequest.Status == StatusCode.Success)
                 {
                     Debug.Log($"Uninstalled: {removeRequest.PackageIdOrName}");
-                    Repaint();
+                    EditorApplication.delayCall += SceneReloader.ReloadOpenScenes;
                 }
                 else if (removeRequest.Status >= StatusCode.Failure)
                 {
@@ -211,7 +212,7 @@ namespace FFH.PackageManager
                 if (embedRequest.Status == StatusCode.Success)
                 {
                     Debug.Log($"Embedded: {embedRequest.Result.packageId}");
-                    Repaint();
+                    EditorApplication.delayCall += SceneReloader.ReloadOpenScenes;
                 }
                 else if (embedRequest.Status >= StatusCode.Failure)
                 {
