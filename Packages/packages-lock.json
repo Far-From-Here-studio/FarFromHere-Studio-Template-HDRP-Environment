@@ -7,6 +7,12 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.farfromhere.hdrp-template-demo-resources": {
+      "version": "file:C:/Users/Kosmi/Documents/GitHub/com.farfromhere.hdrp-template-demo-resources",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.unity.asset-store-tools": {
       "version": "file:com.unity.asset-store-tools",
       "depth": 0,
@@ -207,7 +213,7 @@
         "com.unity.burst": "1.8.14",
         "com.unity.mathematics": "1.3.2",
         "com.unity.ugui": "2.0.0",
-        "com.unity.collections": "2.4.1",
+        "com.unity.collections": "2.4.3",
         "com.unity.modules.physics": "1.0.0",
         "com.unity.modules.terrain": "1.0.0",
         "com.unity.modules.jsonserialize": "1.0.0",

@@ -150,6 +150,21 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "17e1aac791f5404da9c4c15231c8e01d",
+    "m_Id": 3,
+    "m_DisplayName": "Wind_Amplitude",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Wind_Amplitude",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "224e4871ff5a4cb6b64315bff3f9ced4",
     "m_Id": 1,
     "m_DisplayName": "Wind_Speed",
@@ -219,10 +234,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 48.000003814697269,
-            "y": -7.000007152557373,
-            "width": 208.99993896484376,
-            "height": 95.00001525878906
+            "x": 91.00006866455078,
+            "y": -71.99995422363281,
+            "width": 208.99990844726563,
+            "height": 94.99999237060547
         }
     },
     "m_Slots": [
@@ -279,10 +294,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 877.0,
-            "y": -144.99998474121095,
+            "x": 418.0,
+            "y": -235.00001525878907,
             "width": 145.0,
-            "height": 148.99998474121095
+            "height": 149.00001525878907
         }
     },
     "m_Slots": [
@@ -381,9 +396,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -449.0,
-            "y": -238.99998474121095,
-            "width": 248.00003051757813,
+            "x": -446.99993896484377,
+            "y": -238.99996948242188,
+            "width": 247.9999542236328,
             "height": 325.9999694824219
         }
     },
@@ -396,6 +411,9 @@
         },
         {
             "m_Id": "51661beb0bcf4538b745beabf3ff52ee"
+        },
+        {
+            "m_Id": "17e1aac791f5404da9c4c15231c8e01d"
         }
     ],
     "synonyms": [

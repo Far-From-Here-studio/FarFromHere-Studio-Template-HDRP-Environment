@@ -638,6 +638,20 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
+                    "m_Id": "26745f4e260446ab81748197a91866c1"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "e6375cfbe65347bd82b80efe7aa55420"
+                },
+                "m_SlotId": 2
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
                     "m_Id": "29184977b3af4112ab2c366b3042fc8b"
                 },
                 "m_SlotId": 1
@@ -1977,20 +1991,6 @@
                     "m_Id": "eabc82e6cea34d479fe1d9da477cfd81"
                 },
                 "m_SlotId": 0
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "cd4ce87488f94b4294c864da4948bbe6"
-                },
-                "m_SlotId": 1
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "e6375cfbe65347bd82b80efe7aa55420"
-                },
-                "m_SlotId": 2
             }
         },
         {
@@ -3896,7 +3896,7 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     },
-    "m_ScreenSpaceType": 0
+    "m_ScreenSpaceType": 1
 }
 
 {
@@ -5887,8 +5887,8 @@
     "m_ObjectId": "537e15aa7afd4aaa96b6f40c3739bde8",
     "m_Title": "New Group",
     "m_Position": {
-        "x": -6384.99951171875,
-        "y": 1828.9998779296875
+        "x": -6385.0,
+        "y": 1827.0
     }
 }
 
@@ -6148,7 +6148,7 @@
     "m_Title": "Clearing mask for shot composition",
     "m_Position": {
         "x": -5817.0,
-        "y": 976.0000610351563
+        "y": 976.0
     }
 }
 
@@ -7866,7 +7866,7 @@
     "m_ObjectId": "75bacc35e8e441abaee6028995ef3216",
     "m_Title": "Using LOD to create blur",
     "m_Position": {
-        "x": -2239.999755859375,
+        "x": -2240.0,
         "y": 1406.0
     }
 }
@@ -8665,7 +8665,7 @@
     "m_ObjectId": "8b149cc256744eb3972df46199961584",
     "m_Title": "Fog Mask",
     "m_Position": {
-        "x": -5338.99951171875,
+        "x": -5339.0,
         "y": 2192.0
     }
 }
@@ -8999,8 +8999,8 @@
     "m_ObjectId": "91b53d4fab0640d4b5ba90a6b8bc3a66",
     "m_Title": "Screenspace tiling",
     "m_Position": {
-        "x": -7862.400390625,
-        "y": 1345.2000732421875
+        "x": -7862.0,
+        "y": 1345.0
     }
 }
 
@@ -13466,8 +13466,8 @@
     "m_ObjectId": "e51660ee5b5643ccbb9ad9c8e0b518c6",
     "m_Title": "Sampling the animated custom render target of water droplets",
     "m_Position": {
-        "x": -6581.00048828125,
-        "y": 1328.0
+        "x": -6576.0,
+        "y": 1324.0
     }
 }
 
@@ -13739,7 +13739,7 @@
     "m_Title": "Quick way to generate normal from grayscale",
     "m_Position": {
         "x": -5416.0,
-        "y": 231.99993896484376
+        "y": 232.0
     }
 }
 
