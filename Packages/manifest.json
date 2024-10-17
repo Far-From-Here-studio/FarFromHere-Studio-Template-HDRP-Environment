@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.farfromhere.package-importer": "https://github.com/Far-From-Here-studio/com.farfromhere.package-importer.git",
     "com.unity.cinemachine": "3.1.2",
     "com.unity.entities.graphics": "1.2.4",
     "com.unity.feature.development": "1.0.2",

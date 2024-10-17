@@ -7,6 +7,13 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.farfromhere.package-importer": {
+      "version": "https://github.com/Far-From-Here-studio/com.farfromhere.package-importer.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "3eb3dadc3743555bf5be19407cc5e23c13c00ad7"
+    },
     "com.unity.bindings.openimageio": {
       "version": "1.0.0",
       "depth": 1,
