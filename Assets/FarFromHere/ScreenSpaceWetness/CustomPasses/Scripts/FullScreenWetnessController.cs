@@ -70,7 +70,9 @@ public class FullScreenWetnessController : MonoBehaviour
         {
             var snow = Shader.GetGlobalFloat("_SnowCover");
             FullScreenWetness.SetFloat("_WaterSmoothness", Wetness * (1-snow));
+            Shader.SetGlobalFloat("_Wetness", Wetness * (1 - snow));
             FullScreenWetness.SetFloat("_DropletStrenght", RainDropStrenght * (1-snow));
+            Shader.SetGlobalFloat("_RainDrops", RainDropStrenght * (1 - snow));
             FullScreenWetness.SetFloat("_DistanceView", DetailsDistance);
         }
         if(RainOnCamera)

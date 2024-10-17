@@ -2793,8 +2793,8 @@
         "y": 1.0
     },
     "m_DefaultValue": {
-        "x": 0.0,
-        "y": 0.0
+        "x": -1.0,
+        "y": 1.0
     },
     "m_Labels": []
 }
@@ -3078,7 +3078,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -3419,8 +3419,8 @@
     "m_ObjectId": "8210becddc3b499991488e9fa4293766",
     "m_Title": "Damping & Fading",
     "m_Position": {
-        "x": 10.0,
-        "y": 10.0
+        "x": -810.9998779296875,
+        "y": -1611.0
     }
 }
 
@@ -4530,7 +4530,7 @@
     "m_StageCapability": 2,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -4699,8 +4699,8 @@
     "m_ObjectId": "c4cdd26aa75e43ceb080eb819a274a2d",
     "m_Title": "Random droplets generation",
     "m_Position": {
-        "x": -2622.666748046875,
-        "y": -160.66668701171876
+        "x": -2622.0,
+        "y": -161.0
     }
 }
 
@@ -4774,7 +4774,7 @@
     },
     "m_DefaultValue": {
         "x": 0.0,
-        "y": 0.0
+        "y": 1.0
     },
     "m_Labels": []
 }

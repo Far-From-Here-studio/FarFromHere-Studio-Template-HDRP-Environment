@@ -17,11 +17,11 @@ public class FFHWindManager : MonoBehaviour
     {
         WindRotation = transform.rotation.eulerAngles.y;
 
-        _internalrotation = Mathf.Lerp(_internalrotation, WindRotation, Time.deltaTime * 5f);
+        _internalrotation = Mathf.Lerp(_internalrotation, WindRotation, Time.deltaTime * 2f);
         float difference = Mathf.Abs(WindRotation) - Mathf.Abs(_internalrotation);
         difference = Mathf.Clamp(Mathf.Abs(difference)*25, 0, 1);
 
         //TO DO: WindAmplitude
-        Shader.SetGlobalVector("_WindParameters", new Vector4(WindRotation, WindSpeed, difference, 0 ));
+        Shader.SetGlobalVector("_WindParameters", new Vector4(WindRotation, WindSpeed, difference, WindAmplitude));
     }
 }
