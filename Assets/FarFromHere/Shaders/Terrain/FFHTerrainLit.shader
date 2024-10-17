@@ -1,21 +1,9 @@
-Shader "FarFromHere/MeteoVFX/TerrainLit"
+Shader "HDRP/TerrainLit"
 {
     Properties
     {
         [HideInInspector] [ToggleUI] _EnableHeightBlend("EnableHeightBlend", Float) = 0.0
         _HeightTransition("Height Transition", Range(0, 1.0)) = 0.0
-        _AmbianteOcclusion("Ambiante Occlusion", Range(0, 1.0)) = 0.0
-        _EmissionStrenght("EmissionStrenght",Range(0, 9900000)) = 150000
-        _ColorBufferStrenght("MeteoVFX Color Buffer", Range(0,1)) = 0.5
-        _AlphaBufferStrenght("Alpha Buffer Strenght", Range(0, 1.0)) = 0.0
-        _VertexHeightBufferStrenght("VertexHeight Buffer Strenght", Range(0, 1.0)) = 0.0
-        _FVOffset("",Float) = 700
-        _FVScale("",Float) = 0.125
-       // _3DNoise("3D Noise", 3D) = "white" {}
-
-        _TerrainPosition("TerrainPos", Vector) = (0,0,0,0)
-        [HDR]_SnowColor("Snow Color",Color) = (0,0,0,0)
-        //_SnowCover("Snow Cover", Range(0, 1.0)) = 0.0
         [HideInInspector] [Enum(Off, 0, From Ambient Occlusion, 1)]  _SpecularOcclusionMode("Specular Occlusion Mode", Int) = 1
 
         // TODO: support tri-planar?
@@ -85,15 +73,17 @@ Shader "FarFromHere/MeteoVFX/TerrainLit"
 
     #pragma shader_feature_local _DISABLE_DECALS
     #pragma shader_feature_local _ADD_PRECOMPUTED_VELOCITY
-   
+
     #pragma multi_compile _ _ALPHATEST_ON
 
     // Define _DEFERRED_CAPABLE_MATERIAL for shader capable to run in deferred pass
     #define _DEFERRED_CAPABLE_MATERIAL
 
+    // Enable the support of global mip bias in the shader.
+    // Only has effect if the global mip bias is enabled in shader config and DRS is enabled.
+    #define SUPPORT_GLOBAL_MIP_BIAS
 
     #include "./Includes/FFHTerrainLit_Splatmap_Includes.hlsl"
-
 
     ENDHLSL
 
@@ -153,14 +143,6 @@ Shader "FarFromHere/MeteoVFX/TerrainLit"
             #pragma multi_compile_fragment _ RENDERING_LAYERS
 
             #define SHADERPASS SHADERPASS_GBUFFER
-
-            #pragma multi_compile _ _USEFV
-            #pragma multi_compile _ _USEALPHA
-            #pragma multi_compile _ _USECOLOR
-            #pragma multi_compile _ _USEEMISSION
-            #pragma multi_compile _ _USEVERTEXHEIGHT
-            #pragma multi_compile _ _USECOVERAGE
-                        
             #include "./Includes/FFHTerrainLitTemplate.hlsl"
             #include "./Includes/FFHTerrainLit_Splatmap.hlsl"
 
@@ -192,11 +174,6 @@ Shader "FarFromHere/MeteoVFX/TerrainLit"
 
             #define SHADERPASS SHADERPASS_LIGHT_TRANSPORT
             #pragma shader_feature EDITOR_VISUALIZATION
-                        
-            #pragma multi_compile _ _USEVERTEXHEIGHT
-            #pragma multi_compile _ _USEEMISSION
-            
-                        
             #include "./Includes/FFHTerrainLitTemplate.hlsl"
             #include "./Includes/FFHTerrainLit_Splatmap.hlsl"
 
@@ -227,14 +204,6 @@ Shader "FarFromHere/MeteoVFX/TerrainLit"
             #pragma instancing_options assumeuniformscaling nomatrices nolightprobe nolightmap
 
             #define SHADERPASS SHADERPASS_SHADOWS
-
-            
-            #pragma multi_compile _ _USEALPHA
-            #pragma multi_compile _ _USEVERTEXHEIGHT
-
-                        
-
-
             #include "./Includes/FFHTerrainLitTemplate.hlsl"
             #include "./Includes/FFHTerrainLit_Splatmap.hlsl"
 
@@ -276,12 +245,6 @@ Shader "FarFromHere/MeteoVFX/TerrainLit"
             #pragma multi_compile _ WRITE_MSAA_DEPTH
 
             #define SHADERPASS SHADERPASS_DEPTH_ONLY
-                        
-            #pragma multi_compile _ _USEALPHA
-            #pragma multi_compile _ _USECOLOR
-            #pragma multi_compile _ _USEVERTEXHEIGHT
-
-                        
             #include "./Includes/FFHTerrainLitTemplate.hlsl"
             #ifdef WRITE_NORMAL_BUFFER
                 #if defined(_NORMALMAP)
@@ -341,16 +304,7 @@ Shader "FarFromHere/MeteoVFX/TerrainLit"
 
             #pragma multi_compile USE_FPTL_LIGHTLIST USE_CLUSTERED_LIGHTLIST
 
-
             #define SHADERPASS SHADERPASS_FORWARD
-
-            #pragma multi_compile _ _USEFV
-            #pragma multi_compile _ _USEALPHA
-            #pragma multi_compile _ _USECOLOR
-            #pragma multi_compile _ _USEEMISSION
-            #pragma multi_compile _ _USEVERTEXHEIGHT
-            #pragma multi_compile _ _USECOVERAGE
-            
             #include "./Includes/FFHTerrainLitTemplate.hlsl"
             #include "./Includes/FFHTerrainLit_Splatmap.hlsl"
 
@@ -377,9 +331,6 @@ Shader "FarFromHere/MeteoVFX/TerrainLit"
             #pragma editor_sync_compilation
             #define SHADERPASS SHADERPASS_DEPTH_ONLY
             #define SCENESELECTIONPASS
-                
-            #pragma multi_compile _ _USEALPHA
-
             #include "./Includes/FFHTerrainLitTemplate.hlsl"
             #include "./Includes/FFHTerrainLit_Splatmap.hlsl"
 
@@ -389,7 +340,6 @@ Shader "FarFromHere/MeteoVFX/TerrainLit"
         UsePass "Hidden/Nature/Terrain/Utilities/PICKING"
     }
 
-   
     SubShader
     {
         // This tags allow to use the shader replacement features
@@ -406,6 +356,7 @@ Shader "FarFromHere/MeteoVFX/TerrainLit"
             "DiffuseA_MaskMapUsed" = "Density"                                      // when MaskMap is enabled
             "TerrainCompatible" = "True"
         }
+
         Pass
         {
             Name "IndirectDXR"
@@ -436,11 +387,10 @@ Shader "FarFromHere/MeteoVFX/TerrainLit"
 
             #define SHADOW_LOW
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/TerrainLit/TerrainLitTemplateRayTracing.hlsl"
-            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/TerrainLit/TerrainLit_Splatmap.hlsl"
+            #include "./Includes/FFHTerrainLit_Splatmap.hlsl"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/ShaderPassRaytracingIndirect.hlsl"
             ENDHLSL
         }
-
 
         Pass
         {
@@ -457,14 +407,10 @@ Shader "FarFromHere/MeteoVFX/TerrainLit"
             #pragma multi_compile _ PROBE_VOLUMES_L1 PROBE_VOLUMES_L2
             #pragma multi_compile _ DIRLIGHTMAP_COMBINED
 
-            #pragma multi_compile _ _USEFV                      
-            #pragma multi_compile _ _USEALPHA
-            #pragma multi_compile _ _USECOLOR
-          //  #pragma multi_compile _ _USEEMISSION
-            #pragma multi_compile _ _USEVERTEXHEIGHT
-            #pragma multi_compile _ _USECOVERAGE
-              
+            #pragma multi_compile DECALS_OFF DECALS_3RT DECALS_4RT
+            #pragma multi_compile _ DECAL_SURFACE_GRADIENT
 
+            #define PATH_TRACING_CLUSTERED_DECALS
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/FragInputs.hlsl"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/ShaderPass.cs.hlsl"
@@ -474,7 +420,7 @@ Shader "FarFromHere/MeteoVFX/TerrainLit"
 
             #define SHADOW_LOW
 
-            #include "./Includes/FFHTerrainLitTemplateRayTracing.hlsl"
+            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/TerrainLit/TerrainLitTemplateRayTracing.hlsl"
             #include "./Includes/FFHTerrainLit_Splatmap.hlsl"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/ShaderPassRaytracingForward.hlsl"
             ENDHLSL
@@ -495,23 +441,18 @@ Shader "FarFromHere/MeteoVFX/TerrainLit"
             #pragma multi_compile _ DYNAMICLIGHTMAP_ON
             #pragma multi_compile _ PROBE_VOLUMES_L1 PROBE_VOLUMES_L2
             #pragma multi_compile _ DIRLIGHTMAP_COMBINED
-                
-            #pragma multi_compile _ _USEFV
-            #pragma multi_compile _ _USEALPHA
-            #pragma multi_compile _ _USECOLOR
-           // #pragma multi_compile _ _USEEMISSION
-            #pragma multi_compile _ _USEVERTEXHEIGHT
-            #pragma multi_compile _ _USECOVERAGE
-              
 
+            #pragma multi_compile DECALS_OFF DECALS_3RT DECALS_4RT
+            #pragma multi_compile _ DECAL_SURFACE_GRADIENT
+
+            #define PATH_TRACING_CLUSTERED_DECALS
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/FragInputs.hlsl"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/ShaderPass.cs.hlsl"
 
             #define SHADERPASS SHADERPASS_RAYTRACING_GBUFFER
             #pragma multi_compile _ MINIMAL_GBUFFER
-
-            #include "./Includes/FFHTerrainLitTemplateRayTracing.hlsl"
+            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/TerrainLit/TerrainLitTemplateRayTracing.hlsl"
             #include "./Includes/FFHTerrainLit_Splatmap.hlsl"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/ShaderPassRaytracingGBuffer.hlsl"
             ENDHLSL
@@ -527,12 +468,6 @@ Shader "FarFromHere/MeteoVFX/TerrainLit"
             #pragma only_renderers d3d11 xboxseries ps5
             #pragma raytracing surface_shader
 
-            #pragma multi_compile _ _USEFV                    
-            #pragma multi_compile _ _USEALPHA
-            #pragma multi_compile _ _USEVERTEXHEIGHT
-            #pragma multi_compile _ _USEEMISSION
-              
-
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/FragInputs.hlsl"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/ShaderPass.cs.hlsl"
@@ -540,7 +475,7 @@ Shader "FarFromHere/MeteoVFX/TerrainLit"
             #define SHADERPASS SHADERPASS_RAYTRACING_VISIBILITY
             #pragma multi_compile _ TRANSPARENT_COLOR_SHADOW
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/TerrainLit/TerrainLitTemplateRayTracing.hlsl"
-            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/TerrainLit/TerrainLit_Splatmap.hlsl"
+            #include "./Includes/FFHTerrainLit_Splatmap.hlsl"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/ShaderPassRaytracingVisibility.hlsl"
             ENDHLSL
         }
@@ -579,8 +514,6 @@ Shader "FarFromHere/MeteoVFX/TerrainLit"
             HLSLPROGRAM
             #pragma only_renderers d3d11 xboxseries ps5
             #pragma raytracing surface_shader
-            #pragma multi_compile _ _USEEMISSION
-
 
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/FragInputs.hlsl"
@@ -592,7 +525,6 @@ Shader "FarFromHere/MeteoVFX/TerrainLit"
 
             #pragma multi_compile _ DEBUG_DISPLAY
             #pragma multi_compile _ SENSORSDK_OVERRIDE_REFLECTANCE
-
 
             #ifdef SENSORSDK_OVERRIDE_REFLECTANCE
                 #define SENSORSDK_ENABLE_LIDAR
@@ -609,7 +541,7 @@ Shader "FarFromHere/MeteoVFX/TerrainLit"
             #endif
 
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/TerrainLit/TerrainLitTemplateRayTracing.hlsl"
-            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/TerrainLit/TerrainLit_Splatmap.hlsl"
+            #include "./Includes/FFHTerrainLit_Splatmap.hlsl"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/ShaderPassPathTracing.hlsl"
             ENDHLSL
         }

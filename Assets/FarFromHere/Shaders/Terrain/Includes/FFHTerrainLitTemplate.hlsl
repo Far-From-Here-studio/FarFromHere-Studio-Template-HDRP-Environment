@@ -4,20 +4,17 @@
 #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/FragInputs.hlsl"
 #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/ShaderPass.cs.hlsl"
 
-
 #if SHADERPASS == SHADERPASS_GBUFFER && !defined(DEBUG_DISPLAY)
     // When we have alpha test, we will force a depth prepass so we always bypass the clip instruction in the GBuffer
     // Don't do it with debug display mode as it is possible there is no depth prepass in this case
     #define SHADERPASS_GBUFFER_BYPASS_ALPHA_TEST
 #endif
 
-
 #if SHADERPASS == SHADERPASS_FORWARD && !defined(_SURFACE_TYPE_TRANSPARENT) && !defined(DEBUG_DISPLAY)
     // In case of opaque we don't want to perform the alpha test, it is done in depth prepass and we use depth equal for ztest (setup from UI)
     // Don't do it with debug display mode as it is possible there is no depth prepass in this case
     #define SHADERPASS_FORWARD_BYPASS_ALPHA_TEST
 #endif
-
 
 #if defined(_ALPHATEST_ON)
     #define ATTRIBUTES_NEED_TEXCOORD0
@@ -29,6 +26,10 @@
     #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Debug/DebugDisplay.hlsl"
 #endif
 #ifdef SCENESELECTIONPASS
+    #include "Packages/com.unity.render-pipelines.high-definition/Runtime/ShaderLibrary/PickingSpaceTransforms.hlsl"
+#elif SHADERPASS == SHADERPASS_LIGHT_TRANSPORT
+    // Use Unity's built-in matrices for meta pass rendering
+    #define SCENEPICKINGPASS
     #include "Packages/com.unity.render-pipelines.high-definition/Runtime/ShaderLibrary/PickingSpaceTransforms.hlsl"
 #endif
 #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Material.hlsl"
@@ -93,7 +94,7 @@
 #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/ShaderPassGBuffer.hlsl"
 #elif SHADERPASS == SHADERPASS_LIGHT_TRANSPORT
 #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/ShaderPassLightTransport.hlsl"
-#elif SHADERPASS == SHADERPASS_SHADOWS || SHADERPASS == SHADERPASS_DEPTH_ONLY || SHADERPASS == SHADERPASS_VERTEXSPECIAL
+#elif SHADERPASS == SHADERPASS_SHADOWS || SHADERPASS == SHADERPASS_DEPTH_ONLY
 #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/ShaderPassDepthOnly.hlsl"
 #elif SHADERPASS == SHADERPASS_FORWARD
 #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/ShaderPassForward.hlsl"

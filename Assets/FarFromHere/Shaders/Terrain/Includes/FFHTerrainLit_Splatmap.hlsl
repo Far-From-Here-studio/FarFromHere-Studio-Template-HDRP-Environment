@@ -1,3 +1,7 @@
+#if defined(_NORMALMAP) && defined(SURFACE_GRADIENT)
+#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/NormalSurfaceGradient.hlsl"
+#endif
+
 TEXTURE2D(_Control0);
 
 #define DECLARE_TERRAIN_LAYER_TEXS(n)   \
@@ -22,12 +26,6 @@ DECLARE_TERRAIN_LAYER_TEXS(3);
 SAMPLER(sampler_Splat0);
 SAMPLER(sampler_Control0);
 
-float _AmbianteOcclusion;
-float _SnowCover;
-float4 _SnowColor;
-float _ColorBufferStrenght;
-
-
 float GetSumHeight(float4 heights0, float4 heights1)
 {
     float sumHeight = heights0.x;
@@ -43,6 +41,7 @@ float GetSumHeight(float4 heights0, float4 heights1)
     return sumHeight;
 }
 
+#ifdef _NORMALMAP
 float3 SampleNormalGrad(TEXTURE2D_PARAM(textureName, samplerName), float2 uv, float2 dxuv, float2 dyuv, float scale)
 {
     float4 nrm = SAMPLE_TEXTURE2D_GRAD(textureName, samplerName, uv, dxuv, dyuv);
@@ -60,6 +59,7 @@ float3 SampleNormalGrad(TEXTURE2D_PARAM(textureName, samplerName), float2 uv, fl
     #endif
 #endif
 }
+#endif
 
 float4 RemapMasks(float4 masks, float blendMask, float4 remapOffset, float4 remapScale)
 {
@@ -74,32 +74,11 @@ float4 RemapMasks(float4 masks, float blendMask, float4 remapOffset, float4 rema
     SAMPLER(OVERRIDE_SPLAT_SAMPLER_NAME);
 #endif
 
-void TerrainSplatBlend(float2 controlUV, float2 splatBaseUV, in PositionInputs posInput, inout TerrainLitSurfaceData surfaceData)
+void TerrainSplatBlend(float2 controlUV, float2 splatBaseUV, inout TerrainLitSurfaceData surfaceData)
 {
-    
-    float3 worldUV = posInput.positionWS;
-    float3 absoluteworldpos = GetAbsolutePositionWS(worldUV);
-    float2 PlanarUVabsWS = absoluteworldpos.rb;
-    
-    float x = absoluteworldpos.r + _BufferData.r;
-    float y = (1 - absoluteworldpos.b) + _BufferData.g;
-    
-    float2 projectedpos = float2(x, y) * _BufferData.b;
-    float2 FVprojectedpos = (float2(x, y) + _FVOffset) * (_BufferData.b * _FVScale);
-    
-#ifdef _USECOLOR
-    float4 ColorBuffer = SAMPLE_TEXTURE2D(_ColorBuffer, sampler_ColorBuffer, projectedpos) * _ColorBufferStrenght;
-        #ifdef _USEFV
-            float4 FVColor = SAMPLE_TEXTURE2D(_FVColor, sampler_FVColor, FVprojectedpos) * _ColorBufferStrenght;
-        #endif 
-#endif
-#ifdef _USECOVERAGE
-    float Coverage = SAMPLE_TEXTURE2D(_CoverageBuffer, sampler_CoverageBuffer, projectedpos).r;
-#endif
-    //float4 EmissionBuffer = SAMPLE_TEXTURE2D(_EmissionBuffer, sampler_EmissionBuffer, projectedpos);
-    
     // TODO: triplanar
     // TODO: POM
+
     float4 albedo[_LAYER_COUNT];
     float3 normal[_LAYER_COUNT];
     float4 masks[_LAYER_COUNT];
@@ -246,64 +225,72 @@ void TerrainSplatBlend(float2 controlUV, float2 splatBaseUV, in PositionInputs p
         weights[6] = blendMasks1.z;
         weights[7] = blendMasks1.w;
     #endif
-    float3 SnowColor = _SnowColor.rgb;
-    float3 terraincolor = 0;
-    
+
+    surfaceData.albedo = 0;
     surfaceData.normalData = 0;
     float3 outMasks = 0;
     UNITY_UNROLL for (int i = 0; i < _LAYER_COUNT; ++i)
     {
-        terraincolor += albedo[i].rgb * weights[i];
+        surfaceData.albedo += albedo[i].rgb * weights[i];
         surfaceData.normalData += normal[i].rgb * weights[i]; // no need to normalize
         outMasks += masks[i].xyw * weights[i];
     }
-    #ifdef _USECOLOR
-    terraincolor += ColorBuffer;
-        #ifdef _USEFV
-        terraincolor += FVColor;
-        #endif
-    #endif
-    #ifdef _USECOVERAGE
-    terraincolor = lerp(terraincolor, SnowColor, clamp(_SnowCover - (Coverage*10),0,1));
-    #endif
-
-
-    surfaceData.albedo = terraincolor;
     surfaceData.smoothness = outMasks.z;
     surfaceData.metallic = outMasks.x;
-    surfaceData.ao = outMasks.y * (1 - _AmbianteOcclusion) + (_SnowCover * 0.5f);
-
+    surfaceData.ao = outMasks.y;
 }
 
-void TerrainLitShade(float2 uv,in PositionInputs posInput, inout TerrainLitSurfaceData surfaceData)
+void TerrainLitShade(float2 uv, inout TerrainLitSurfaceData surfaceData)
 {
-    TerrainSplatBlend(uv, uv, posInput, surfaceData);
+    TerrainSplatBlend(uv, uv, surfaceData);
 }
 
-
-
-void TerrainLitDebug(float2 uv, inout float3 baseColor)
+void TerrainLitDebug(float2 uv, uint2 screenSpaceCoords, out float3 baseColor)
 {
 #ifdef DEBUG_DISPLAY
     if (_DebugMipMapModeTerrainTexture == DEBUGMIPMAPMODETERRAINTEXTURE_CONTROL)
-        baseColor = GetTextureDataDebug(_DebugMipMapMode, uv, _Control0, _Control0_TexelSize, _Control0_MipInfo, baseColor);
+    {
+        baseColor = GET_TEXTURE_STREAMING_DEBUG_FOR_TERRAIN_TEX(screenSpaceCoords, uv, _Control0);
+    }
     else if (_DebugMipMapModeTerrainTexture == DEBUGMIPMAPMODETERRAINTEXTURE_LAYER0)
-        baseColor = GetTextureDataDebug(_DebugMipMapMode, uv * _Splat0_ST.xy + _Splat0_ST.zw, _Splat0, _Splat0_TexelSize, _Splat0_MipInfo, baseColor);
+    {
+        baseColor = GET_TEXTURE_STREAMING_DEBUG_FOR_TERRAIN_TEX(screenSpaceCoords, uv * _Splat0_ST.xy + _Splat0_ST.zw, _Splat0);
+    }
     else if (_DebugMipMapModeTerrainTexture == DEBUGMIPMAPMODETERRAINTEXTURE_LAYER1)
-        baseColor = GetTextureDataDebug(_DebugMipMapMode, uv * _Splat1_ST.xy + _Splat1_ST.zw, _Splat1, _Splat1_TexelSize, _Splat1_MipInfo, baseColor);
+    {
+        baseColor = GET_TEXTURE_STREAMING_DEBUG_FOR_TERRAIN_TEX(screenSpaceCoords, uv * _Splat1_ST.xy + _Splat1_ST.zw, _Splat1);
+    }
     else if (_DebugMipMapModeTerrainTexture == DEBUGMIPMAPMODETERRAINTEXTURE_LAYER2)
-        baseColor = GetTextureDataDebug(_DebugMipMapMode, uv * _Splat2_ST.xy + _Splat2_ST.zw, _Splat2, _Splat2_TexelSize, _Splat2_MipInfo, baseColor);
+    {
+        baseColor = GET_TEXTURE_STREAMING_DEBUG_FOR_TERRAIN_TEX(screenSpaceCoords, uv * _Splat2_ST.xy + _Splat2_ST.zw, _Splat2);
+    }
     else if (_DebugMipMapModeTerrainTexture == DEBUGMIPMAPMODETERRAINTEXTURE_LAYER3)
-        baseColor = GetTextureDataDebug(_DebugMipMapMode, uv * _Splat3_ST.xy + _Splat3_ST.zw, _Splat3, _Splat3_TexelSize, _Splat3_MipInfo, baseColor);
+    {
+        baseColor = GET_TEXTURE_STREAMING_DEBUG_FOR_TERRAIN_TEX(screenSpaceCoords, uv * _Splat3_ST.xy + _Splat3_ST.zw, _Splat3);
+    }
     #ifdef _TERRAIN_8_LAYERS
         else if (_DebugMipMapModeTerrainTexture == DEBUGMIPMAPMODETERRAINTEXTURE_LAYER4)
-            baseColor = GetTextureDataDebug(_DebugMipMapMode, uv * _Splat4_ST.xy + _Splat4_ST.zw, _Splat4, _Splat4_TexelSize, _Splat4_MipInfo, baseColor);
+        {
+            baseColor = GET_TEXTURE_STREAMING_DEBUG_FOR_TERRAIN_TEX(screenSpaceCoords, uv * _Splat4_ST.xy + _Splat4_ST.zw, _Splat4);
+        }
         else if (_DebugMipMapModeTerrainTexture == DEBUGMIPMAPMODETERRAINTEXTURE_LAYER5)
-            baseColor = GetTextureDataDebug(_DebugMipMapMode, uv * _Splat5_ST.xy + _Splat5_ST.zw, _Splat5, _Splat5_TexelSize, _Splat5_MipInfo, baseColor);
+        {
+            baseColor = GET_TEXTURE_STREAMING_DEBUG_FOR_TERRAIN_TEX(screenSpaceCoords, uv * _Splat5_ST.xy + _Splat5_ST.zw, _Splat5);
+        }
         else if (_DebugMipMapModeTerrainTexture == DEBUGMIPMAPMODETERRAINTEXTURE_LAYER6)
-            baseColor = GetTextureDataDebug(_DebugMipMapMode, uv * _Splat6_ST.xy + _Splat6_ST.zw, _Splat6, _Splat6_TexelSize, _Splat6_MipInfo, baseColor);
+        {
+            baseColor = GET_TEXTURE_STREAMING_DEBUG_FOR_TERRAIN_TEX(screenSpaceCoords, uv * _Splat6_ST.xy + _Splat6_ST.zw, _Splat6);
+        }
         else if (_DebugMipMapModeTerrainTexture == DEBUGMIPMAPMODETERRAINTEXTURE_LAYER7)
-            baseColor = GetTextureDataDebug(_DebugMipMapMode, uv * _Splat7_ST.xy + _Splat7_ST.zw, _Splat7, _Splat7_TexelSize, _Splat7_MipInfo, baseColor);
+        {
+            baseColor = GET_TEXTURE_STREAMING_DEBUG_FOR_TERRAIN_TEX(screenSpaceCoords, uv * _Splat7_ST.xy + _Splat7_ST.zw, _Splat7);
+        }
+    #else
+        else
+        {
+            // User is trying to debug layer 4/5/6/7 but this terrain only has 4 layers: let's try to display some basic "invalid" debug info...
+            baseColor = GET_TEXTURE_STREAMING_DEBUG_FOR_TERRAIN_NO_TEX(screenSpaceCoords, uv);
+        }
     #endif
 #endif
 }
