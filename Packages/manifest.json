@@ -1,8 +1,9 @@
 {
   "dependencies": {
     "com.farfromhere.package-importer": "https://github.com/Far-From-Here-studio/com.farfromhere.package-importer.git",
+    "com.farfromhere.screenspace-wetness": "https://github.com/Far-From-Here-studio/com.farfromhere.screenspace-wetness.git",
     "com.unity.cinemachine": "3.1.2",
-    "com.unity.entities.graphics": "1.2.4",
+    "com.unity.entities.graphics": "1.3.2",
     "com.unity.feature.development": "1.0.2",
     "com.unity.formats.fbx": "5.1.1",
     "com.unity.polybrush": "1.1.8",
