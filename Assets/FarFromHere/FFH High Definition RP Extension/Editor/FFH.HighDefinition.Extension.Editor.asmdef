@@ -1,0 +1,20 @@
+{
+    "name": "FFH.HighDefinition.Extension.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:c73ead7eda4417b499c6312b87c2119a",
+        "GUID:457756d89b35d2941b3e7b37b4ece6f1",
+        "GUID:78bd2ddd6e276394a9615c203e574844"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
