@@ -7,6 +7,25 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.farfromhere.hdrp-extension": {
+      "version": "file:C:/Users/Kosmi/Documents/GitHub/com.farfromhere.hdrp-extension",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
+    "com.farfromhere.hdrp-template-demo-resources": {
+      "version": "https://github.com/Far-From-Here-studio/com.farfromhere.hdrp-template-demo-resources.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "eb64620c8142d8062a2f3e81c6a8ac831866ab87"
+    },
+    "com.farfromhere.heightbuffer": {
+      "version": "file:C:/Users/Kosmi/Documents/GitHub/com.farfromhere.heightbuffer",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.farfromhere.package-importer": {
       "version": "https://github.com/Far-From-Here-studio/com.farfromhere.package-importer.git",
       "depth": 0,
@@ -15,11 +34,16 @@
       "hash": "3eb3dadc3743555bf5be19407cc5e23c13c00ad7"
     },
     "com.farfromhere.screenspace-wetness": {
-      "version": "https://github.com/Far-From-Here-studio/com.farfromhere.screenspace-wetness.git",
+      "version": "file:C:/Users/Kosmi/Documents/GitHub/com.farfromhere.screenspace-wetness",
       "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "0721a108c47d18f240fb288187320dbaf88cd465"
+      "source": "local",
+      "dependencies": {}
+    },
+    "com.farfromhere.utilities": {
+      "version": "file:C:/Users/Kosmi/Documents/GitHub/com.farfromhere.utilities",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
     },
     "com.unity.bindings.openimageio": {
       "version": "1.0.0",
@@ -239,9 +263,9 @@
       }
     },
     "com.unity.render-pipelines.high-definition-config": {
-      "version": "file:com.unity.render-pipelines.high-definition-config",
+      "version": "17.0.3",
       "depth": 0,
-      "source": "embedded",
+      "source": "builtin",
       "dependencies": {
         "com.unity.render-pipelines.core": "17.0.3"
       }
