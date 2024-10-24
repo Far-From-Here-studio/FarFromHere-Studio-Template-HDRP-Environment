@@ -7,6 +7,20 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.farfromhere.hdrp-extension": {
+      "version": "https://github.com/Far-From-Here-studio/com.farfromhere.hdrp-extension.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "d438783cef18e57a987c716dff3af99b12c907ec"
+    },
+    "com.farfromhere.hdrp-template-demo-resources": {
+      "version": "https://github.com/Far-From-Here-studio/com.farfromhere.hdrp-template-demo-resources.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "eb64620c8142d8062a2f3e81c6a8ac831866ab87"
+    },
     "com.farfromhere.package-importer": {
       "version": "https://github.com/Far-From-Here-studio/com.farfromhere.package-importer.git",
       "depth": 0,
@@ -20,6 +34,13 @@
       "source": "git",
       "dependencies": {},
       "hash": "0721a108c47d18f240fb288187320dbaf88cd465"
+    },
+    "com.farfromhere.utilities": {
+      "version": "https://github.com/Far-From-Here-studio/com.farfromhere.utilities.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "e0749802261670dd730f436ea1d8241ea70b929c"
     },
     "com.unity.bindings.openimageio": {
       "version": "1.0.0",
@@ -239,9 +260,9 @@
       }
     },
     "com.unity.render-pipelines.high-definition-config": {
-      "version": "file:com.unity.render-pipelines.high-definition-config",
+      "version": "17.0.3",
       "depth": 0,
-      "source": "embedded",
+      "source": "builtin",
       "dependencies": {
         "com.unity.render-pipelines.core": "17.0.3"
       }
