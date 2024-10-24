@@ -8,10 +8,11 @@
       "url": "https://packages.unity.com"
     },
     "com.farfromhere.hdrp-extension": {
-      "version": "file:C:/Users/Kosmi/Documents/GitHub/com.farfromhere.hdrp-extension",
+      "version": "https://github.com/Far-From-Here-studio/com.farfromhere.hdrp-extension.git",
       "depth": 0,
-      "source": "local",
-      "dependencies": {}
+      "source": "git",
+      "dependencies": {},
+      "hash": "d438783cef18e57a987c716dff3af99b12c907ec"
     },
     "com.farfromhere.hdrp-template-demo-resources": {
       "version": "https://github.com/Far-From-Here-studio/com.farfromhere.hdrp-template-demo-resources.git",
@@ -19,12 +20,6 @@
       "source": "git",
       "dependencies": {},
       "hash": "eb64620c8142d8062a2f3e81c6a8ac831866ab87"
-    },
-    "com.farfromhere.heightbuffer": {
-      "version": "file:C:/Users/Kosmi/Documents/GitHub/com.farfromhere.heightbuffer",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {}
     },
     "com.farfromhere.package-importer": {
       "version": "https://github.com/Far-From-Here-studio/com.farfromhere.package-importer.git",
@@ -34,16 +29,18 @@
       "hash": "3eb3dadc3743555bf5be19407cc5e23c13c00ad7"
     },
     "com.farfromhere.screenspace-wetness": {
-      "version": "file:C:/Users/Kosmi/Documents/GitHub/com.farfromhere.screenspace-wetness",
+      "version": "https://github.com/Far-From-Here-studio/com.farfromhere.screenspace-wetness.git",
       "depth": 0,
-      "source": "local",
-      "dependencies": {}
+      "source": "git",
+      "dependencies": {},
+      "hash": "0721a108c47d18f240fb288187320dbaf88cd465"
     },
     "com.farfromhere.utilities": {
-      "version": "file:C:/Users/Kosmi/Documents/GitHub/com.farfromhere.utilities",
+      "version": "https://github.com/Far-From-Here-studio/com.farfromhere.utilities.git",
       "depth": 0,
-      "source": "local",
-      "dependencies": {}
+      "source": "git",
+      "dependencies": {},
+      "hash": "e0749802261670dd730f436ea1d8241ea70b929c"
     },
     "com.unity.bindings.openimageio": {
       "version": "1.0.0",
