@@ -1549,7 +1549,7 @@
         },
         "preventRotation": false
     },
-    "m_Path": "FarFromHere/MuseShaderGraph",
+    "m_Path": "FarFromHere/Lit",
     "m_GraphPrecision": 1,
     "m_PreviewMode": 2,
     "m_OutputNode": {
@@ -1906,8 +1906,8 @@
     "m_ObjectId": "087379c58ccd44ec9d01103c83e5a395",
     "m_Title": "NormalMap",
     "m_Position": {
-        "x": -1305.0001220703125,
-        "y": 1591.0001220703125
+        "x": -1142.0,
+        "y": 1591.0
     }
 }
 
@@ -3789,7 +3789,7 @@
     "m_Title": "UV Parameters",
     "m_Position": {
         "x": -2935.0,
-        "y": 1612.9996337890625
+        "y": 1613.0
     }
 }
 
@@ -3843,7 +3843,7 @@
     "m_StageCapability": 3,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -5224,7 +5224,7 @@
     "m_StageCapability": 3,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 3
@@ -5310,7 +5310,7 @@
     "m_ObjectId": "6a6d44afcefe4a029023859de3a12f0c",
     "m_Title": "Ambient Occlusion",
     "m_Position": {
-        "x": -604.0000610351563,
+        "x": -604.0,
         "y": 2149.0
     }
 }
@@ -5603,7 +5603,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -5961,8 +5961,8 @@
     "m_ObjectId": "7692d14872234c228d02133e4f425035",
     "m_Title": "Vertex Displacement V2.0",
     "m_Position": {
-        "x": -1478.9998779296875,
-        "y": -68.99989318847656
+        "x": -1479.0,
+        "y": -109.0
     }
 }
 
@@ -6026,7 +6026,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -6469,7 +6469,7 @@
     "m_Title": "BaseMap",
     "m_Position": {
         "x": -727.0,
-        "y": 498.9999694824219
+        "y": 499.0
     }
 }
 
@@ -6515,7 +6515,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -7162,7 +7162,7 @@
     "m_ObjectId": "9686568cd7f8412c8d28c9d3d209419a",
     "m_Title": "SmoothnessMap",
     "m_Position": {
-        "x": -947.1232299804688,
+        "x": -947.0,
         "y": 1213.0
     }
 }
@@ -7824,7 +7824,7 @@
     "m_StageCapability": 3,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -7890,7 +7890,7 @@
     "m_StageCapability": 3,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -8040,7 +8040,7 @@
     "hlslDeclarationOverride": 2,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -8171,7 +8171,7 @@
     "m_StageCapability": 3,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -8519,7 +8519,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -8549,7 +8549,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -8635,7 +8635,7 @@
     "m_StageCapability": 3,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -9622,7 +9622,7 @@
     "m_Title": "MetallicMap",
     "m_Position": {
         "x": -898.0,
-        "y": 862.9998168945313
+        "y": 863.0
     }
 }
 
@@ -10392,7 +10392,7 @@
     "m_Title": "VertexUV",
     "m_Position": {
         "x": -2733.0,
-        "y": -98.00001525878906
+        "y": -98.0
     }
 }
 

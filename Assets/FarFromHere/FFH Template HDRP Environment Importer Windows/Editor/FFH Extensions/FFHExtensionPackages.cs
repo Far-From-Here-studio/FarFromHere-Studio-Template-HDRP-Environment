@@ -4,14 +4,14 @@ using UnityEngine;
 using FFH.PackageImporter.Editor;
 
 [InitializeOnLoad]
-public class DigitalHumanPackageImporter : FFHPackageImporterWindow
+public class FFHExtensionPackages : FFHPackageImporterWindow
 {
-    private const string PACKAGE_DATA_NAME = "DigitalHumanPackageData";
-    private const string SESSION_STATE_KEY = "DigitalHuman_ShowAtStart";
-    static DigitalHumanPackageImporter FFHPackageImporterWindow;
+    private const string PACKAGE_DATA_NAME = "FFHExtensionPackagesData";
+    private const string SESSION_STATE_KEY = "FFHExtensionPackages_ShowAtStart";
+    static FFHExtensionPackages FFHPackageImporterWindow;
     static FFHPackagesData data;
     private bool Listed;
-    static DigitalHumanPackageImporter()
+    static FFHExtensionPackages()
     {
         EditorApplication.delayCall += DelayedStart;
     }
@@ -33,16 +33,15 @@ public class DigitalHumanPackageImporter : FFHPackageImporterWindow
     }
 
 
-    [MenuItem("FarFromHereStudio/Packages Installer/Digital Human")]
+    [MenuItem("FarFromHereStudio/Packages Installer/HDRP Extension Packages")]
     protected static void Init()
     {
-        FFHPackageImporterWindow = GetWindow<DigitalHumanPackageImporter>();
+        FFHPackageImporterWindow = GetWindow<FFHExtensionPackages>();
         FFHPackageImporterWindow.Show();
     }
 
     protected void OnInspectorUpdate()
     {
-
         if (listRequest != null)
         {
             IsListing = true;
@@ -58,6 +57,11 @@ public class DigitalHumanPackageImporter : FFHPackageImporterWindow
                 Listed = IsListing;
             }
         }
+    }
+    private void OnValidate()
+    {
+        if (PackagesNames != null && packageData != null) CheckAllPackages();
+        Repaint();
     }
     private void OnEnable()
     {
