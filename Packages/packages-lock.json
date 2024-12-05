@@ -12,7 +12,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "d438783cef18e57a987c716dff3af99b12c907ec"
+      "hash": "778139532b215c87ce7df1b1295bcfd5a892e0c7"
     },
     "com.farfromhere.hdrp-template-demo-resources": {
       "version": "https://github.com/Far-From-Here-studio/com.farfromhere.hdrp-template-demo-resources.git",
@@ -41,6 +41,12 @@
       "source": "git",
       "dependencies": {},
       "hash": "e0749802261670dd730f436ea1d8241ea70b929c"
+    },
+    "com.unity.asset-store-tools": {
+      "version": "file:com.unity.asset-store-tools",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
     },
     "com.unity.bindings.openimageio": {
       "version": "1.0.0",

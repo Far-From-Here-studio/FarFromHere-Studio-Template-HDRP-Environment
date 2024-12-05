@@ -1,0 +1,76 @@
+﻿FarFromHere-Studio-Template
+HDRP-Environment
+
+
+ChangeLogs
+v 0.1
+Base demo content
+
+
+v 0.2
+We did forget few things for the Base Demo Content Release, mainly because I messed some resources with a work-in-progress extension, my bad, so here is a quick patch.
+
+
+
+
+new :
+
+
+* Baked Scene baked using Adaptative Probe Volume
+* TerrainDetails shader Color Control
+
+
+
+
+added : 
+
+
+* WindZone for trees
+
+
+fix :
+
+* missing Rocks “Goldveins” Materials (cave area)
+* Missing River Material
+* Some Rocks Overgrowth Prefab LOD_0 layer was “HiddenRuntime” changed to “Default”, causing the LOD_0 to be culled from the main camera
+* FireCampVFX particles layermask changed to “TransparentVFX”
+* Remove missing scripts
+* Remove the “Terrain” LayerMask, changed “Terrains” to “Default”
+
+v 0.3 
+
+
+(0.3): Unity6 preview release!
+
+
+*  DXR demo Scene setup using FSR2:  improved Quality and Lighting
+*  Updated player camera to use Cinemachine3, added a handheld noise to the camera
+*  ScreenSpace Wetness CustomPass
+*  CustomRT noise shaders (2d/3d...)
+*  New Lit (master) Shaders
+*  Documentation
+*  Updated Docs and Installation Guide
+*  Easier Installation process using FFHPackageImporter’s packages
+
+
+Template [folder => FarFromHere/Template/..] :
+
+
+* Added Clean HDRP template scene with snapshot “Bootstrap” under the Template folder
+* Added Class =>   FFHStudioHDRPTemplatePipeline: ISceneTemplatePipeline 
+* Added Space emission Cubemap grabbed from https://wwwtyro.net/
+Space Generator with Seeds and Parameters => https://tools.wwwtyro.net/space-3d/index.html#animationSpeed=1&fov=80&nebulae=true&pointStars=true&resolution=1024&seed=1t0x61lmxp4w&stars=true&sun=true
+* Moved Main Settings to Settings/HDRPDefaultResources
+* Moved Secondary Volumes to FarFromHere/Template/Volumes/..
+
+
+FFH Package Importer:
+
+
+Added FFH Template HDRP Environment Importer Windows to manage packages and Demo resources using this project
+
+
+* Added TemplateHDRPEnvironmentPackages to store 3D and resources
+* Added FFHStudioHDRPTemplatePackagesImporter window to import/remove the Demo content and the base Unity packages needed for this project
+* Added FFH HDRP Extensions to store Demo Shaders
+* Added FFHExtensionPackages window to import/remove FFH ScreenSpace Wetness, FFH Utilities, and FFH HDRP Extension packages

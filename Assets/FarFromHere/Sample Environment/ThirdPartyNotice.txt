@@ -1,0 +1,4 @@
+#To Fully run the FarFromHere Studio Template: HDRP Environment user need to install the two following Assets from Unity Technologies using Asset Store services 
+===========================================
+#Unity Terrain - HDRP Demo Scene under Standard Unity Asset Store EULA; see Third-Party Notices.txt file in package for details.
+#Terrain Sample Asset Pack under Open Data Commons Open Database License; see Third-Party Notices.txt file in package for details.
